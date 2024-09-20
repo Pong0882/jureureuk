@@ -20,11 +20,20 @@
         #main{
             height: 2000px;
         }
+
+        #header {
+            text-align: left;
+        }
         #main-icon{
             margin-top: 18px;
-            background-color: blue;
+            padding: 10px;
+            display: inline-block;
+        }
+        #main-icon > div {
+            background-image: url(./favicon.ico);
             width: 46px;
             height: 46px;
+            background-size: 46px;
         }
     </style>
 </head>
@@ -33,7 +42,7 @@
         <div id = "wrap-center">
             <div id = "header">
                 <div id = "main-icon">
-                    
+                    <div></div>
                 </div>
             </div>
             <div id = "search"></div>
