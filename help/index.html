@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="main_logo.png">
+    <title>주르륵</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- 메뉴와 검색창이 포함된 헤더 -->
+        <header class="top-menu">
+            <div class="menu-left">
+                <button class="logo-btn">
+                    <img src="./main_logo.png" alt="주르륵" class="logo-img">
+                    주르륵
+                </button>
+                <nav class="main-nav">
+                    <button class="nav-btn active">칵테일</button>
+                    <button class="nav-btn">나만의 냉장고</button>
+                    <button class="nav-btn">레시피 공유</button>
+                </nav>
+            </div>
+            <div class="menu-right">
+                <input type="text" placeholder="칵테일, 또는 재료를 검색하세요" class="search-input">
+                <button class="fav-btn">즐겨찾기</button>
+                <button class="profile-btn">프로필</button>
+            </div>
+        </header>
+        
+        <body>
+        <section class="top-recipes">
+            <h2>금주의 Top 10</h2>
+            <div id="top10-container">
+                <p id="top10-item"></p>
+            </div>
+        </section>
+        <!-- 외부 JavaScript 파일 연결 -->
+        <script src="js.js"></script>
+        </div>
+        
+      
+
+            <h2>금주의 Top 10</h2>
+            <div class="recipe-grid">
+                <!-- 각 칵테일 레시피 카드 -->
+                <div class="recipe-card">
+                    <img src="https://example.com/white-russian.png" alt="화이트 러시안">
+                    <p>화이트 러시안</p>
+                </div>
+                <div class="recipe-card">
+                    <img src="https://example.com/peach-dream.png" alt="피치 드림">
+                    <p>피치 드림</p>
+                </div>
+                <!-- 다른 칵테일 카드들도 추가 가능 -->
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
