@@ -28,8 +28,13 @@
             </div>
             <div class="menu-right">
                 <input type="text" placeholder="칵테일, 또는 재료를 검색하세요" class="search-input">
-                <button class="fav-btn">즐겨찾기</button>
-                <button class="profile-btn">프로필</button>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <script src="https://apis.google.com/js/platform.js" async defer></script>
+                <div class="google-login-button">
+                    <img src="./icon-google.png" alt="Google Login">
+                    <span>로그인</span>
+                </div>
+
             </div>
         </header>
 

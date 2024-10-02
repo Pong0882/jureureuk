@@ -63,6 +63,12 @@ header.top-menu {
     cursor: pointer;
 }
 
+.glogo-img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
 .logo-img {
     width: 24px;
     height: 24px;
@@ -124,6 +130,7 @@ header.top-menu {
     background-color: #e0e0e0;
     /* 전체 배경 색상 설정 */
 }
+
 .top-recipes h2 {
     border-bottom: 2px solid #444;
     padding-bottom: 10px;
@@ -152,6 +159,7 @@ header.top-menu {
     padding: 10px;
     background-color: #f7f7f7;
 }
+
 /* 기존 스타일 유지 */
 /* 금주의 Top 10과 순위를 한 줄에 배치하고 작게 만듦 */
 .top-recipes {
@@ -171,14 +179,15 @@ header.top-menu {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     /* 약간의 그림자 추가 */
 }
+
 .top-recipes h2 {
     margin: 0;
-        padding-left: 10px;
-        /* 왼쪽 여백 */
-        white-space: nowrap;
-        /* 줄바꿈 방지 */
-        border-bottom: none;
-        /* 밑줄 제거 */
+    padding-left: 10px;
+    /* 왼쪽 여백 */
+    white-space: nowrap;
+    /* 줄바꿈 방지 */
+    border-bottom: none;
+    /* 밑줄 제거 */
 }
 
 #top10-container {
@@ -223,4 +232,37 @@ header.top-menu {
         transform: translateY(-100%);
         opacity: 0;
     }
+}
+
+.google-login-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    padding: 8px 12px;
+    /* 여백을 적절히 조정 */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.google-login-button img {
+    width: 20px;
+    /* 이미지 크기 */
+    height: auto;
+    margin-right: 8px;
+    /* 텍스트와 아이콘 사이의 간격 */
+}
+
+.google-login-button span {
+    font-size: 14px;
+    /* 텍스트 크기 조정 */
+    vertical-align: middle;
+    /* 텍스트의 수직 중앙 정렬 */
+}
+
+.google-login-button:hover {
+    background-color: #e0e0e0;
+    /* 마우스 오버 시 배경색 변경 */
 }
