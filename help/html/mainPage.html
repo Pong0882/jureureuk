@@ -22,14 +22,14 @@
                 </button>
                 <nav class="main-nav">
                     <button class="nav-btn active">칵테일</button>
-                    <button class="nav-btn">나만의 냉장고</button>
-                    <button class="nav-btn">레시피 공유</button>
+                    <button class="nav-btn" onclick="window.location.href='./refrigerator/main.html'">나만의 냉장고</button>
+                    <button class="nav-btn" onclick="window.location.href='./sharing/main.html'">레시피 공유</button>
                 </nav>
             </div>
             <div class="menu-right">
                 <input type="text" placeholder="칵테일, 또는 재료를 검색하세요" class="search-input">
-                <button class="fav-btn">즐겨찾기</button>
-                <button class="profile-btn">프로필</button>
+                <button class="fav-btn" onclick="window.location.href='./bookmark/main.html'">즐겨찾기</button>
+                <button class="profile-btn" onclick="window.location.href='./profile/main.html'">프로필</button>
             </div>
         </header>
 
@@ -51,7 +51,7 @@
         <!-- 랜덤 레시피 -->
         <div class="section-header">
             <h2>랜덤 레시피</h2>
-            <button class="more-button">더보기</button>
+            <button class="more-btn" onclick="window.location.href='./more/randomMore.html'">더보기</button>
         </div>
         <div class="recipe-slider">
             <button class="slider-arrow left-arrow">◀</button>
@@ -103,7 +103,7 @@
     <div class="recipe-section">
         <div class="section-header">
             <h2>인기 레시피</h2>
-            <button class="more-button">더보기</button>
+            <button class="more-btn" onclick="window.location.href='./more/popularMore.html'">더보기</button>
         </div>
         <div class="recipe-slider">
             <button class="slider-arrow left-arrow">◀</button>

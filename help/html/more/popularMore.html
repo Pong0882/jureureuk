@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../png/main_Logo.png">
+    <title>주르륵</title>
+    <link rel="stylesheet" href="../../css/before_login.css">
+    <link rel="stylesheet" href="../../css/more/pop.css">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- 메뉴와 검색창이 포함된 헤더 -->
+        <header class="top-menu">
+            <div class="menu-left">
+                <button class="logo-btn">
+                    <img src="../../png/main_Logo.png" alt="주르륵" class="logo-img">
+                    주르륵
+                </button>
+                <nav class="main-nav">
+                    <button class="nav-btn" onclick="window.location.href='../mainPage.html'">칵테일</button>
+                    <button class="nav-btn" onclick="window.location.href='../refrigerator/main.html'">나만의 냉장고</button>
+                    <button class="nav-btn" onclick="window.location.href='../sharing/main.html'">레시피 공유</button>
+                </nav>
+            </div>
+            <div class="menu-right">
+                <input type="text" placeholder="칵테일, 또는 재료를 검색하세요" class="search-input">
+                <button class="fav-btn" onclick="window.location.href='../bookmark/main.html'">즐겨찾기</button>
+                <button class="profile-btn" onclick="window.location.href='../profile/main.html'">프로필</button>
+            </div>
+        </header><!-- 인기 레시피 제목 및 기간 선택 -->
+        <section class="popular-recipe-header">
+            <h1>인기 레시피</h1>
+        </section>
+        <!--
+        <section class="filter-options">
+            <button class="filter-btn active">전체</button>
+            <button class="filter-btn">1년</button>
+            <button class="filter-btn">1달</button>
+        </section>
+    -->
+        <!-- 인기 레시피 카드 섹션 -->
+        <section class="recipe-section">
+            <div class="recipe-grid">
+                <!-- 레시피 카드 -->
+                <div class="recipe-card">
+                    <img src="../../png/main_Logo.png" alt="마가리타">
+                    <p>마가리타</p>
+                </div>
+                <div class="recipe-card">
+                    <img src="../../png/main_Logo.png" alt="네그로니">
+                    <p>네그로니</p>
+                </div>
+                <div class="recipe-card">
+                    <img src="../../png/main_Logo.png" alt="마이타이">
+                    <p>마이타이</p>
+                </div>
+                <div class="recipe-card">
+                    <img src="../../png/main_Logo.png" alt="롱 아일랜드 아이스티">
+                    <p>롱 아일랜드 아이스티</p>
+                </div>
+                <div class="recipe-card">
+                    <img src="../../png/main_Logo.png" alt="코스모폴리탄">
+                    <p>코스모폴리탄</p>
+                </div>
+                <!-- 더 많은 레시피들 추가 가능 -->
+            </div>
+        </section>
+        
+        </div>
+        </body>
+        
+        </html>
+</html>
