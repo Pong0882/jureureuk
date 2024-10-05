@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>칵테일 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section1 {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+            display: flex;
+            gap: 20px;
+        }
+
+        .section2 {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .section3 {
+            grid-column: 2 / 3;
+            grid-row: 1 / 3;
+            background-color: #f3f3f3;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .cocktail-info {
+            flex-grow: 1;
+        }
+
+        .cocktail-info h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .cocktail-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cocktail-info ul li {
+            margin-bottom: 10px;
+        }
+
+        .cocktail-image {
+            flex-shrink: 0;
+            width: 200px;
+        }
+
+        .cocktail-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .buttons {
+            margin-top: 10px;
+        }
+
+        .like-button,
+        .fav-button {
+            background-color: #f1f1f1;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .like-button:hover,
+        .fav-button:hover {
+            background-color: #ddd;
+        }
+
+        .comment-section {
+            margin-top: 20px;
+        }
+
+        .comment-box {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .register-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .register-button:hover {
+            background-color: #45a049;
+        }
+
+        .recipe-info {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .recipe-info h3 {
+            margin-top: 0;
+        }
+
+        .recipe-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .recipe-info ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Section 1: Image and cocktail information -->
+        <div class="section1">
+            <div class="cocktail-image">
+                <img src="칵테일이미지경로.png" alt="칵테일 이미지">
+            </div>
+            <div class="cocktail-info">
+                <h1>마가리타</h1>
+                <ul>
+                    <li>잔의 립 부분을 소금으로 리밍해준다. 원하면 라임을 넣을 수도 있다.</li>
+                    <li>셰이커에 주재료와 얼음을 모두 넣고 잘 흔들어준다.</li>
+                    <li>얼음을 걸러내 차갑게 식힌 칵테일 잔에 따른다.</li>
+                </ul>
+                <div class="buttons">
+                    <button class="like-button">👍 267</button>
+                    <button class="fav-button">⭐ 즐겨찾기</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Comments -->
+        <div class="section2">
+            <div class="comment-section">
+                <div class="comment-box">
+                    <input type="text" placeholder="댓글을 입력해 주세요." class="comment-box">
+                </div>
+                <button class="register-button">등록</button>
+                <div class="comment">
+                    <p><strong>철수</strong> 2024-04-02</p>
+                    <p>라임주스 대신 오렌지 주스를 사용해도 맛있네요</p>
+                    <p>👍 17</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Recipe Information -->
+        <div class="section3">
+            <div class="recipe-info">
+                <h3>IBA 레시피</h3>
+                <ul>
+                    <li>테킬라 1 2/3 oz</li>
+                    <li>트리플 섹 2/3 oz</li>
+                    <li>라임주스 1/2 oz</li>
+                </ul>
+                <p>도수: 33%</p>
+            </div>
+            <div class="recipe-info" style="margin-top: 20px;">
+                <h3>조주기능사 레시피</h3>
+                <ul>
+                    <li>테킬라 1 1/2 oz</li>
+                    <li>트리플 섹 3/4 oz</li>
+                    <li>라임주스 1/4 oz</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

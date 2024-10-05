@@ -10,7 +10,7 @@
 }
 
 .manage-btn {
-    background-color: #4476ff;
+    background-color: #4477ff;
     border: none;
     padding: 15px 30px;
     color: white;
@@ -31,6 +31,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 20px 0;
+    padding: 0px 0px 0px 0px;
 }
 
 .filter-btn {
@@ -41,7 +42,8 @@
     border-radius: 5px;
     font-size: 14px;
 }
-.filter-btn-have{
+
+.filter-btn-have {
     background-color: #f1f1f1;
     border: none;
     padding: 10px 100px;
@@ -54,8 +56,9 @@
     background-color: #b8b8b8;
     font-weight: bolder;
 }
+
 .filter-btn.active {
-    background-color: #ffde00;
+    background-color: #bcbcbc;
     font-weight: bolder;
 }
 
@@ -96,6 +99,7 @@
     width: 70px;
     height: 70px;
 }
+
 /* 재료 카드 스타일 */
 .ingredient-list {
     display: flex;
@@ -110,7 +114,7 @@
     /* 중앙 정렬 */
     align-items: center;
     gap: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 /* 휴지통 버튼 스타일 */
@@ -140,4 +144,36 @@
 
 .trash-bin:hover {
     background-color: #bbb;
+}
+
+
+
+.center-label {
+    text-align: center;
+    flex-grow: 1;
+    padding-bottom: 30px;
+}
+
+.center-label h2 {
+    font-size: 36px;
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.shop-btn {
+    background-color: #4477ff;
+    border: none;
+    padding: 15px 30px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.shop-btn:hover {
+    background-color: #255aca;
 }

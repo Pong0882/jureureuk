@@ -1,0 +1,73 @@
+.tab-btn {
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tab-btn.active {
+    background-color: #919191;
+    /* 버튼 활성화 시 진한 색상 */
+}
+
+.tab-btn:hover {
+    background-color: #ddd;
+    /* 마우스를 올렸을 때 색상 */
+}
+
+.favorite-menu {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.tab-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+}
+
+.tab-btn.active {
+    background-color: #ccc;
+}
+
+.user-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
+}
+
+.user-profile,
+.profile-item {
+    text-align: center;
+}
+
+.user-profile img,
+.profile-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+.user-profile p,
+.profile-item p {
+    margin-top: 10px;
+    font-size: 16px;
+}

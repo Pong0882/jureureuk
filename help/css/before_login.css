@@ -128,7 +128,7 @@ header.top-menu {
     transition: background-color 0.3s ease;
 }
 
-.fav-btn-active{
+.fav-btn-active {
     background: none;
     background-color: #ddd;
     border: 1px solid #ddd;
@@ -315,12 +315,12 @@ header.top-menu {
 
 .more-button {
     margin-left: 10px;
-        /* 제목과 더보기 버튼 사이의 간격 */
-        background-color: #fff;
-        border: 1px solid #ddd;
-        padding: 5px 10px;
-        border-radius: 5px;
-        cursor: pointer;
+    /* 제목과 더보기 버튼 사이의 간격 */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .more-button:hover {
@@ -340,12 +340,15 @@ header.top-menu {
     scroll-behavior: smooth;
     width: 90%;
     /* 가로 크기 */
+
 }
 
 .recipe-card {
     min-width: 150px;
     margin-right: 10px;
     text-align: center;
+    cursor: pointer;
+    /* 마우스를 올리면 손가락 모양으로 변경 */
 }
 
 .recipe-card img {
