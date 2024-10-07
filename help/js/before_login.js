@@ -21,7 +21,7 @@ function rotateTop10() {
         oldItem.style.animation = 'slide-out 1s ease-in-out forwards'; // 사라지는 애니메이션
         setTimeout(() => {
             top10Container.removeChild(oldItem);
-        }, 1000);  // 사라지는 애니메이션 끝난 후 삭제
+        }, 500);  // 사라지는 애니메이션 끝난 후 삭제
     }
 
     // 새 텍스트 요소 생성
@@ -33,14 +33,16 @@ function rotateTop10() {
     // 컨테이너에 새 요소 추가
     setTimeout(() => {
         top10Container.appendChild(newItem);
-    }, 1000); // 이전 텍스트가 사라진 후에 새로운 텍스트가 올라옴
+    }, 500); // 이전 텍스트가 사라진 후에 새로운 텍스트가 올라옴
 
     // 인덱스 업데이트
     currentIndex = (currentIndex + 1) % top10Items.length;
 }
 
+// 처음에 1번 아이템 표시
+rotateTop10();
 // 2초마다 텍스트 변경
-setInterval(rotateTop10, 2000);
+setInterval(rotateTop10, 3000);
 
 
 
