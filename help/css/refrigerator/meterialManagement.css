@@ -70,8 +70,12 @@
 .ingredient-card {
     width: 150px;
     text-align: center;
+    
 }
-
+.ingredient-card:hover {
+    
+cursor: pointer;
+}
 .ingredient-card img {
     width: 100%;
     height: 150px;
