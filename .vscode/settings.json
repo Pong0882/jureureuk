@@ -1,0 +1,7 @@
+{
+  "java.project.sourcePaths": [
+    "graduation",
+    "jureureuk/src/main/java/com/jureureuk/jureureuk"
+  ],
+  "java.compile.nullAnalysis.mode": "automatic"
+}
