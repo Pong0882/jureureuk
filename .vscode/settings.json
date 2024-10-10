@@ -3,5 +3,6 @@
     "graduation",
     "jureureuk/src/main/java/com/jureureuk/jureureuk"
   ],
-  "java.compile.nullAnalysis.mode": "automatic"
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.configuration.updateBuildConfiguration": "interactive"
 }
