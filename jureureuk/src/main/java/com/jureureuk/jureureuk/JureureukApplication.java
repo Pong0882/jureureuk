@@ -38,7 +38,7 @@ public class JureureukApplication {
 				registry.addViewController("/sharing/write").setViewName("forward:/UI/html/sharing/write.html");
 				registry.addViewController("/beforeLogin").setViewName("forward:/UI/html/beforeLogin.html");
 				registry.addViewController("/mainPage").setViewName("forward:/UI/html/mainPage.html");
-				registry.addViewController("/nickname").setViewName("forward:/UI/html/nickname.html");
+				// registry.addViewController("/nickname").setViewName("forward:/UI/html/nickname.html");
 			}
 		};
 	}

@@ -18,8 +18,15 @@ public class UserService {
         return userRepository.findByGoogleId(googleId);
     }
 
-    // 유저 저장하기
+    // DB에 유저 저장하기
     public void saveUser(User user) {
+        userRepository.save(user);
+    }
+
+    public void saveNickname(String googleId, String nickname) {
+        User user = new User();
+        user.setGoogleId(googleId);
+        user.setNickname(nickname);
         userRepository.save(user);
     }
 }

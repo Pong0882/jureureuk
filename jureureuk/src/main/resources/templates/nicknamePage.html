@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nickname Page</title>
+    <title>닉네임 설정</title>
+    <link rel="stylesheet" href="/UI/css/nickname.css" />
   </head>
+
   <body>
-    <h1>
-      Welcome, your Google ID is: <span th:text="${googleId}">Unknown</span>
-    </h1>
-    <h2>Your name is: <span th:text="${name}">Unknown</span></h2>
+    <form action="/nickname/save" method="post">
+    <div class="container">
+        <div class="form-box">
+            <h2>닉네임</h2>
+            <input type="text" placeholder="닉네임을 입력해 주세요." class="input-field" name="nickname">
+            <p class="help-text">닉네임은 변경이 가능합니다.</p>
+            <div class="button-group">
+                <button class="btn cancel-btn" onclick="window.location.href='/mainPage'">건너뛰기</button>
+                <button class="btn next-btn" type="submit">다음</button>
+            </div>
+        </div>
+    </div>
+</body>
+</form>
   </body>
 </html>
