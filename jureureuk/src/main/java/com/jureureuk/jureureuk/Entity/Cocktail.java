@@ -1,4 +1,4 @@
-package com.jureureuk.jureureuk.Entity;
+package com.jureureuk.jureureuk.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

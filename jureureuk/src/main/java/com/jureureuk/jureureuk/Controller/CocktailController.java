@@ -1,4 +1,4 @@
-package com.jureureuk.jureureuk.Controller;
+package com.jureureuk.jureureuk.controller;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.jureureuk.jureureuk.Entity.Cocktail;
-import com.jureureuk.jureureuk.Repository.CocktailRepository;
+import com.jureureuk.jureureuk.entity.Cocktail;
+import com.jureureuk.jureureuk.repository.CocktailRepository;
 
 @Controller
 public class CocktailController {

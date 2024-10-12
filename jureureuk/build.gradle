@@ -38,6 +38,11 @@ dependencies {
 	implementation 'com.h2database:h2'
 
 	implementation 'org.springframework.boot:spring-boot-devtools'
+
+//구글 연동
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
 }
 
 tasks.named('test') {
