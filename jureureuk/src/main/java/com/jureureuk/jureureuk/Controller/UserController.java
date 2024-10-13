@@ -39,7 +39,7 @@ public class UserController {
             // 아래 코드 나중에 다시씀
             if (user != null) {
                 // 이메일이 존재하면 메인 페이지로 이동
-                return "redirect:/mainPage";
+                return "redirect:/main";
             }
 
             // 로그인된 사용자 정보를 터미널에 출력
@@ -59,7 +59,7 @@ public class UserController {
         System.out.println("로그인된 사용자 이메일: " + googleId);
         System.out.println("로그인된 사용자 이메일: " + nickname);
 
-        return "redirect:/mainPage"; // 메인 페이지로 리다이렉트
+        return "redirect:/main"; // 메인 페이지로 리다이렉트
     }
 
     @GetMapping("/profile")

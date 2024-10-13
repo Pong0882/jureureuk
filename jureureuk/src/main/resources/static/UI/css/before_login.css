@@ -9,7 +9,12 @@ html {
     width: 90%;
     margin: 0 auto;
 }
-
+.recipe-container {
+    display: flex; /* 자식 요소들을 가로로 나열 */
+    gap: 20px; /* 각 카드 사이의 간격 */
+    overflow-x: auto; /* 가로 스크롤 활성화 (선택사항) */
+    padding: 20px 0; /* 위아래 패딩 */
+}
 header.top-menu {
     display: flex;
     justify-content: space-between;
@@ -19,16 +24,14 @@ header.top-menu {
     background-color: #f9f9f9;
 }
 
-.menu-left {
+.menu-left,
+.menu-right {
     display: flex;
     align-items: center;
 }
 
 .menu-right {
-    display: flex;
-    align-items: center;
     flex-grow: 1;
-    /* 오른쪽 메뉴 전체가 남은 공간을 차지하게 */
 }
 
 .search-input {
@@ -36,34 +39,32 @@ header.top-menu {
     border: 1px solid #ddd;
     border-radius: 20px;
     flex-grow: 1;
-    /* 검색창이 남은 공간을 채우도록 설정 */
     margin-right: 10px;
+    width: 200px;
 }
 
 .fav-btn,
-.profile-btn {
-    background: none;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    padding: 8px 15px;
-    margin-left: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    flex-grow: 0;
-    /* 즐겨찾기와 프로필 버튼은 크기가 고정되도록 설정 */
-}
-
+.profile-btn,
+.fav-btn-active,
 .profile-btn-active {
     background: none;
     border: 1px solid #ddd;
-    background-color: #ddd;
     border-radius: 20px;
     padding: 8px 15px;
     margin-left: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     flex-grow: 0;
-    /* 즐겨찾기와 프로필 버튼은 크기가 고정되도록 설정 */
+}
+
+.fav-btn-active,
+.profile-btn-active {
+    background-color: #ddd;
+}
+
+.fav-btn:hover,
+.profile-btn:hover {
+    background-color: #eee;
 }
 
 .logo-btn {
@@ -76,16 +77,19 @@ header.top-menu {
     cursor: pointer;
 }
 
+.glogo-img,
+.logo-img {
+    margin-right: 8px;
+}
+
 .glogo-img {
     width: 20px;
     height: 20px;
-    margin-right: 8px;
 }
 
 .logo-img {
     width: 24px;
     height: 24px;
-    margin-right: 8px;
 }
 
 .main-nav {
@@ -109,149 +113,56 @@ header.top-menu {
     background-color: #ddd;
 }
 
-.search-input {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    width: 200px;
-    margin-right: 10px;
-}
-
-.fav-btn,
-.profile-btn {
-    background: none;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    padding: 8px 15px;
-    margin-left: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.fav-btn-active {
-    background: none;
-    background-color: #ddd;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    padding: 8px 15px;
-    margin-left: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.fav-btn:hover,
-.profile-btn:hover {
-    background-color: #eee;
-}
-
 /* 레시피 카드 스타일 */
 .top-recipes {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 10px;
-    /* 여백 줄임 */
-    background-color: #e0e0e0;
-    /* 전체 배경 색상 설정 */
-}
-
-.top-recipes h2 {
-    border-bottom: 2px solid #444;
-    padding-bottom: 10px;
-}
-
-.recipe-grid {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.recipe-card {
-    width: calc(25% - 20px);
-    margin: 10px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.recipe-card img {
-    width: 100%;
-    height: auto;
-}
-
-.recipe-card p {
-    padding: 10px;
-    background-color: #f7f7f7;
-}
-
-/* 기존 스타일 유지 */
-/* 금주의 Top 10과 순위를 한 줄에 배치하고 작게 만듦 */
-.top-recipes {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 10px 15px 0px 20px;
-    /* 여백을 조금 더 주어 높이 조정 */
     background-color: #e0e0e0;
     font-size: 12px;
     width: 600px;
-    /* 박스를 화면의 절반 너비로 설정 */
     margin: 20px auto;
-    /* 화면 가운데 정렬 */
     border-radius: 15px;
-    /* 둥근 테두리 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* 약간의 그림자 추가 */
 }
 
 .top-recipes h2 {
     margin: 0;
     padding-left: 10px;
-    /* 왼쪽 여백 */
     white-space: nowrap;
-    /* 줄바꿈 방지 */
-    border-bottom: none;
-    /* 밑줄 제거 */
 }
 
 #top10-container {
     display: flex;
     justify-content: center;
-    /* 가운데 정렬 */
     align-items: center;
     flex-grow: 1;
-    /* 남은 공간을 모두 차지 */
 }
 
 #top10-item {
     font-size: 14px;
-    /* 텍스트 크기 줄임 */
     font-weight: bold;
     animation: slide-in 1s ease-in-out forwards;
     text-decoration: none;
-    /* 밑줄 제거 */
 }
 
-/* 아래에서 위로 올라오는 애니메이션 */
 @keyframes slide-in {
     0% {
         transform: translateY(100%);
         opacity: 0;
     }
-
     100% {
         transform: translateY(0);
         opacity: 1;
     }
 }
 
-/* 위로 사라지는 애니메이션 */
 @keyframes slide-out {
     0% {
         transform: translateY(0);
         opacity: 1;
     }
-
     100% {
         transform: translateY(-100%);
         opacity: 0;
@@ -264,7 +175,6 @@ header.top-menu {
     justify-content: center;
     background-color: #f9f9f9;
     padding: 8px 12px;
-    /* 여백을 적절히 조정 */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -273,39 +183,30 @@ header.top-menu {
 
 .google-login-button img {
     width: 20px;
-    /* 이미지 크기 */
     height: auto;
     margin-right: 8px;
-    /* 텍스트와 아이콘 사이의 간격 */
 }
 
 .google-login-button span {
     font-size: 14px;
-    /* 텍스트 크기 조정 */
     vertical-align: middle;
-    /* 텍스트의 수직 중앙 정렬 */
 }
 
 .google-login-button:hover {
     background-color: #e0e0e0;
-    /* 마우스 오버 시 배경색 변경 */
 }
-
-
 
 /* 레시피 섹션 스타일 */
 .recipe-section {
-    margin: 20px 0;
+    margin: 40px 0;
+    padding: 0 20px;
 }
 
-/* 섹션 제목과 더보기 버튼을 오른쪽으로 배치 */
 .section-header {
     display: flex;
     justify-content: flex-start;
-    /* 왼쪽 정렬을 유지하지만 여유 공간 추가 */
     align-items: center;
     padding-left: 100px;
-    /* 텍스트와 왼쪽 간격 추가 */
 }
 
 .section-header h2 {
@@ -315,7 +216,6 @@ header.top-menu {
 
 .more-button {
     margin-left: 10px;
-    /* 제목과 더보기 버튼 사이의 간격 */
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 5px 10px;
@@ -327,42 +227,67 @@ header.top-menu {
     background-color: #ddd;
 }
 
-/* 슬라이더 구조 */
 .recipe-slider {
-    display: flex;
-    align-items: center;
+    position: relative;
+    overflow: hidden;
+    width: calc(100% - 120px);
+    margin: 0 auto;
+    padding-left: 100px;
+    padding-right: 20px;
+    white-space: nowrap;
 }
 
-.recipe-container {
-    display: flex;
-    overflow-x: scroll;
-    /* 가로 스크롤 가능 */
-    scroll-behavior: smooth;
-    width: 90%;
-    /* 가로 크기 */
-
-}
 
 .recipe-card {
-    min-width: 150px;
-    margin-right: 10px;
+    width: 200px;
+    /* 카드의 너비 */
+    height: 300px;
+    /* 카드의 높이 */
+    margin-right: 20px;
+    /* 카드 간격 */
     text-align: center;
-    cursor: pointer;
-    /* 마우스를 올리면 손가락 모양으로 변경 */
-}
-
-.recipe-card img {
-    width: 100%;
+    /* 텍스트 중앙 정렬 */
+    overflow: hidden;
+    /* 넘치는 부분 숨김 */
     border-radius: 10px;
+    /* 모서리를 둥글게 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* 그림자 추가 */
+    display: flex;
+    flex-direction: column;
+    /* 카드 내부를 세로 방향으로 정렬 */
 }
 
-.recipe-card p {
-    margin: 10px 0 0 0;
-    font-size: 14px;
+.recipe-image {
+    height: 80%;
+    /* 이미지 영역을 카드 높이의 80%로 설정 */
+    overflow: hidden;
+    /* 이미지가 영역을 넘어가지 않도록 숨김 */
 }
 
-/* 화살표 버튼 */
+.recipe-image img {
+    width: 100%;
+    /* 이미지 너비를 카드 너비에 맞춤 */
+    height: 100%;
+    /* 이미지 높이를 이미지 영역에 맞춤 */
+    object-fit: cover;
+    /* 이미지가 잘리더라도 카드 크기를 유지하도록 설정 */
+}
+
+.recipe-name {
+    height: 20%;
+    /* 이름 영역을 카드 높이의 20%로 설정 */
+    display: flex;
+    align-items: center;
+    /* 텍스트를 수직 중앙 정렬 */
+    justify-content: center;
+    /* 텍스트를 수평 중앙 정렬 */
+    font-size: 16px;
+    /* 텍스트 크기 설정 */
+    font-weight: bold;
+    /* 텍스트 굵기 설정 */
+}
+
 .slider-arrow {
     background-color: #f0f0f0;
     border: none;
@@ -376,39 +301,12 @@ header.top-menu {
     background-color: #ddd;
 }
 
-/* 좌우 화살표 위치 조정 */
 .left-arrow {
     margin-right: 10px;
 }
 
 .right-arrow {
     margin-left: 10px;
-}
-
-.recipe-slider {
-    position: relative;
-    overflow: hidden;
-    /* 슬라이더 영역을 넘어가는 카드들을 숨김 */
-    margin-top: 20px;
-    width: 100%;
-    /* 슬라이더 전체 너비 */
-    white-space: nowrap;
-    /* 카드가 한 줄에 나열되도록 설정 */
-}
-
-.recipe-cards {
-    display: inline-flex;
-    /* 카드들을 한 줄에 나열 */
-    transition: transform 0.3s ease-in-out;
-    /* 슬라이더 움직임 애니메이션 */
-}
-
-.recipe-card {
-    min-width: 200px;
-    margin-right: 20px;
-    text-align: center;
-    white-space: normal;
-    /* 카드 내 텍스트 줄바꿈 가능 */
 }
 
 .slider-btn {
@@ -432,81 +330,6 @@ header.top-menu {
     right: 10px;
 }
 
-.recipe-card {
-    width: 200px;
-    /* 카드의 고정 너비 */
-    height: 300px;
-    /* 카드의 고정 높이 */
-    margin-right: 20px;
-    text-align: center;
-    overflow: hidden;
-    /* 내용이 넘칠 경우 숨김 처리 */
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* 약간의 그림자 추가 */
-}
-
-.recipe-card img {
-    width: 100%;
-    /* 이미지가 카드의 너비에 맞춰서 크기 조정 */
-    height: auto;
-    /* 비율을 유지하면서 이미지 크기 조정 */
-    object-fit: cover;
-    /* 이미지가 카드에 꽉 차도록 */
-}
-
-.recipe-cards {
-    display: flex;
-    /* 카드들이 한 줄에 나란히 배치 */
-    transition: transform 0.3s ease-in-out;
-}
-
-.recipe-slider {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-}
-
-.recipe-section {
-    margin: 40px 0;
-    padding: 0 20px;
-    /* 좌우에 20px 여백 추가 */
-}
-
-.recipe-slider {
-    position: relative;
-    overflow: hidden;
-    width: calc(100% - 120px);
-    /* 좌우 여백을 반영한 슬라이더 너비 */
-    margin: 0 auto;
-    /* 슬라이더를 가운데로 정렬 */
-    padding-left: 100px;
-    /* 왼쪽 여백 추가 */
-    padding-right: 20px;
-    /* 오른쪽 여백 추가 */
-}
-
-.recipe-cards {
-    display: flex;
-    transition: transform 0.3s ease-in-out;
-}
-
-.recipe-card {
-    width: 200px;
-    height: 300px;
-    margin-right: 100px;
-    text-align: center;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.recipe-card img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
 .more-btn {
     background-color: #ddd;
     border: none;
@@ -515,5 +338,5 @@ header.top-menu {
     border-radius: 5px;
     font-size: 14px;
     margin-left: 20px;
-    /* 리스트 오른쪽에 여백 추가 */
 }
+
