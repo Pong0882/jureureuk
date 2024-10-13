@@ -40,6 +40,22 @@
             <button class="filter-btn">1달</button>
         </section>
     -->
+<h1 th:text="${cocktail.name}"></h1>
+
+    <div class="cocktail-card">
+        <img th:src="@{|/${cocktail.photo}|}" alt="칵테일 이미지" />
+        <p th:text="${cocktail.description}">칵테일 설명</p>
+        <p>좋아요 수: <span th:text="${cocktail.likesCount}">0</span></p>
+        <p>싫어요 수: <span th:text="${cocktail.dislikesCount}">0</span></p>
+        <p>즐겨찾기 수: <span th:text="${cocktail.bookmarkCount}">0</span></p>
+        <h3>레시피</h3>
+        <p th:text="${cocktail.recipe1}">레시피 1</p>
+        <p th:text="${cocktail.recipe2}">레시피 2</p>
+    </div>
+
+    <div th:if="${message != null}">
+        <p th:text="${message}"></p>
+    </div>
 
         <div class="container2">
             <!-- Section 1: Image and cocktail information -->

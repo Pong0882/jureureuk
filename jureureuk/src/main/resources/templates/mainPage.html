@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -100,68 +100,26 @@
     </div>
 
     <!-- 인기 레시피 (구조 동일) -->
-    <div class="recipe-section">
-        <div class="section-header">
-            <h2>인기 레시피</h2>
-            <button class="more-btn" onclick="window.location.href='./more/popularMore'">더보기</button>
-        </div>
-        <div class="recipe-slider">
-            <button class="slider-arrow left-arrow">◀</button>
-            <div class="recipe-container">
-                <!-- 각 레시피 카드 -->
+<div class="recipe-section">
+    <div class="section-header">
+        <h2>인기 레시피</h2>
+        <button class="more-btn" onclick="window.location.href='./more/popularMore'">더보기</button>
+    </div>
+    <div class="recipe-slider">
+        <button class="slider-arrow left-arrow">◀</button>
+        <div class="recipe-container">
+            <!-- 각 레시피 카드 -->
+            <div th:each="cocktail : ${cocktails}">
                 <div class="recipe-card">
-                    <img src="UI/png/main_logo.png" alt="마가리타">
-                    <p>마가리타</p>
-                </div>
-                <div class="recipe-card">
-                    <img src="UI/png/main_logo.png" alt="네그로니">
-                    <p>네그로니</p>
-                </div>
-                <div class="recipe-card">
-                    <img src="UI/png/main_logo.png" alt="마이타이">
-                    <p>마이타이</p>
-                </div>
-                <!-- 추가 카드들 -->
-                <div class="recipe-card">
-                    <img src="UI/png/main_logo.png" alt="화이트 러시안 드림">
-                    <p>화이트 러시안 드림</p>
-                </div>
-                <div class="recipe-card">
-                    <img src="UI/png/main_logo.png" alt="피치 드림">
-                    <p>피치 드림</p>
-                </div>
-                <div class="recipe-card">
-                    <img src="UI/png/main_logo.png" alt="사과 마가리타">
-                    <p>사과 마가리타</p>
-                </div>
-                <div class="recipe-card">
-                    <img src="UI/png/main_logo.png" alt="화이트 러시안 드림">
-                    <p>화이트 러시안 드림</p>
-                </div>
-                <div class="recipe-card">
-                    <img src="UI/png/main_logo.png" alt="피치 드림">
-                    <p>피치 드림</p>
-                </div>
-                <div class="recipe-card">
-                    <img src="UI/png/main_logo.png" alt="사과 마가리타">
-                    <p>사과 마가리타</p>
-                </div>
-                <div class="recipe-card">
-                    <img src="UI/png/main_logo.png" alt="화이트 러시안 드림">
-                    <p>화이트 러시안 드림</p>
-                </div>
-                <div class="recipe-card">
-                    <img src="UI/png/main_logo.png" alt="피치 드림">
-                    <p>피치 드림</p>
-                </div>
-                <div class="recipe-card">
-                    <img src="UI/png/main_logo.png" alt="사과 마가리타">
-                    <p>사과 마가리타</p>
+                    <img th:src="@{${cocktail.photo}}" th:alt="${cocktail.name}">
+                    <p th:text="${cocktail.name}"></p>
                 </div>
             </div>
-            <button class="slider-arrow right-arrow">▶</button>
         </div>
+        <button class="slider-arrow right-arrow">▶</button>
     </div>
+</div>
+
 </body>
 
 </html>

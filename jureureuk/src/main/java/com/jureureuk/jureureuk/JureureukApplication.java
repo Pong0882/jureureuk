@@ -26,7 +26,7 @@ public class JureureukApplication {
 				registry.addViewController("/cocktail/main").setViewName("forward:/UI/html/cocktail/main.html");
 				registry.addViewController("/more/popularMore").setViewName("forward:/UI/html/more/popularMore.html");
 				registry.addViewController("/more/randomMore").setViewName("forward:/UI/html/more/randomMore.html");
-				registry.addViewController("/profile/main").setViewName("forward:/UI/html/profile/main.html");
+				// registry.addViewController("/profile/main").setViewName("forward:/UI/html/profile/main.html");
 				registry.addViewController("/refrigerator/main").setViewName("forward:/UI/html/refrigerator/main.html");
 				registry.addViewController("/refrigerator/MaterialInfo")
 						.setViewName("forward:/UI/html/refrigerator/MaterialInfo.html");

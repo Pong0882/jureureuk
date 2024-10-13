@@ -37,14 +37,48 @@
             <div class="profile-info">
                 <img src="/UI/png/profile.png" alt="사용자 프로필">
                 <div class="profile-details">
-                    <p class="user-name">민수</p>
-                    <p class="user-bio">충주에서 칵테일바를 운영중입니다 놀러오세요</p>
-                    <p class="user-address">단월동 336-2번지 충주시 충청북도</p>
-                </div>
+                    <!-- 유저 정보 출력 영역 -->
+<div th:if="${user != null}">
+    <!-- 닉네임 출력 영역 -->
+    <p class="user-nickname" th:if="${user.nickname != null && user.nickname != ''}">
+        닉네임: <span th:text="${user.nickname}"></span>
+    </p>
+    <p class="user-google-id" th:if="${user.nickname == null || user.nickname == ''}">
+        이메일: <span th:text="${user.googleId}"></span>
+        <span>닉네임을 설정해주세요</span>
+    </p>
+
+    <!-- 소개 출력 영역 -->
+    <p class="user-introduction" th:if="${user.introduction != null && user.introduction != ''}">
+        소개: <span th:text="${user.introduction}"></span>
+    </p>
+    <p class="user-introduction-missing" th:if="${user.introduction == null || user.introduction == ''}">
+        <span>소개를 입력해주세요</span>
+    </p>
+
+    <!-- 주소 출력 영역 -->
+    <p class="user-address" th:if="${user.address != null && user.address != ''}">
+        주소: <span th:text="${user.address}"></span>
+    </p>
+    <p class="user-address-missing" th:if="${user.address == null || user.address == ''}">
+        <span>주소를 입력해주세요</span>
+    </p>
+</div>
+
+
+    <!-- 필요하면 추가 정보도 출력 가능 -->
+</div>
+
                 <div class="profile-stats">
-                    <span class="favorites">⭐ 10</span>
+                    <span class="favorites">⭐ <span th:text="${user.followersCount}"> </span>
                     <button class="edit-btn">수정</button>
                 </div>
+                <!-- 메시지 출력 영역 -->
+                <div class="message" th:text="${message}"></div>
+
+
+    <!-- 필요하면 추가 정보도 출력 가능 -->
+</div>
             </div>
 
             <div class="shared-recipes">

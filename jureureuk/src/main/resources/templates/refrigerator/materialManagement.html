@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/UI/png/main_Logo.png">
+    <title>주르륵</title>
+    <link rel="stylesheet" href="/UI/css/before_login.css">
+    <link rel="stylesheet" href="/UI/css/refrigerator/meterialManagement.css">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- 메뉴와 검색창이 포함된 헤더 -->
+        <header class="top-menu">
+            <div class="menu-left">
+                <button class="logo-btn">
+                    <img src="/UI/png/main_Logo.png" alt="주르륵" class="logo-img">
+                    주르륵
+                </button>
+                <nav class="main-nav">
+                    <button class="nav-btn" onclick="window.location.href='/mainPage'">칵테일</button>
+                    <button class="nav-btn" onclick="window.location.href='/refrigerator/main'">나만의 냉장고</button>
+                    <button class="nav-btn" onclick="window.location.href='/sharing/main'">레시피 공유</button>
+                </nav>
+            </div>
+            <div class="menu-right">
+                <input type="text" placeholder="칵테일, 또는 재료를 검색하세요" class="search-input">
+                <button class="fav-btn" onclick="window.location.href='/bookmark/main'">즐겨찾기</button>
+                <button class="profile-btn" onclick="window.location.href='/profile/main'">프로필</button>
+            </div>
+        </header><!-- 인기 레시피 제목 및 기간 선택 -->
+        <!--
+        <section class="filter-options">
+            <button class="filter-btn active">전체</button>
+            <button class="filter-btn">1년</button>
+            <button class="filter-btn">1달</button>
+        </section>
+    -->
+
+        <body>
+
+            <!-- 제작 가능한 칵테일 보러가기 버튼 -->
+            <section class="ingredient-options">
+                <button class="manage-btn" onclick="window.location.href='./main'">제작 가능 칵테일 보기</button>
+
+                <button class="shop-btn" onclick="window.location.href='./shopping'">쇼핑하기</button>
+            </section>
+            <div class="center-label">
+                <h2>보유중인 재료</h2>
+            </div>
+
+            <!-- 필터 옵션 (보유중, 전체, 주류, 리큐르, 주스, 기타) -->
+            <section class="filter-options">
+                <button class="filter-btn active">전체</button>
+                <button class="filter-btn">주류</button>
+                <button class="filter-btn">리큐르</button>
+                <button class="filter-btn">주스</button>
+                <button class="filter-btn">기타</button>
+            </section>
+
+            <!-- 재료 목록 -->
+            <section class="ingredient-list">
+                <div class="ingredient-card" onclick="window.location.href='./MaterialInfo'">
+                    <img src="/UI/png/tequila.jpg" alt="테킬라 골드">
+                    <p>테킬라 골드</p>
+                    <input type="checkbox" class="ingredient-checkbox" checked>
+                </div>
+                <div class="ingredient-card">
+                    <img src="/UI/png/tequila.jpg" alt="트리플 섹">
+                    <p>트리플 섹</p>
+                    <input type="checkbox" class="ingredient-checkbox">
+                </div>
+                <div class="ingredient-card">
+                    <img src="/UI/png/tequila.jpg" alt="라임 주스">
+                    <p>라임 주스</p>
+                    <input type="checkbox" class="ingredient-checkbox">
+                </div>
+            </section>
+
+            <!-- 휴지통 아이콘 -->
+            <div class="trash-bin">
+                <img src="/UI/png/trash.png" alt="휴지통">
+            </div>
+
+        </body>
+
+</html>

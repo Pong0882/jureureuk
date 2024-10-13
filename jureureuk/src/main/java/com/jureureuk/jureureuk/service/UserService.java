@@ -15,6 +15,7 @@ public class UserService {
 
     // Google ID로 유저 찾기
     public User findUserByGoogleId(String googleId) {
+        System.out.println("Google ID로 사용자 검색: " + googleId);
         return userRepository.findByGoogleId(googleId);
     }
 

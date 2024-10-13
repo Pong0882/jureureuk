@@ -25,4 +25,7 @@
 
 # HTTP 8080 포트를 ngrok을 통해 외부로 노출
 
-ngrok http 8080
+1. ./ngrok.exe http 8080
+2. application.properties 바꾸기
+3. 구글 api 콘솔 주소 바꾸기
+4. html 하이퍼링크 바꾸기

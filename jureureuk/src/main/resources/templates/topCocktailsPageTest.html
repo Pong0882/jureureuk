@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Top 10 Cocktails</title>
+  </head>
+  <body>
+    <h1>Top 10 Cocktails</h1>
+    <div th:if="${cocktails != null}">
+      <div th:each="cocktail : ${cocktails}">
+        <h2 th:text="${cocktail.name}">칵테일 이름</h2>
+        <img th:src="@{${cocktail.photo}}" alt="칵테일 사진" />
+        <p th:text="${cocktail.description}">칵테일 설명</p>
+        <p>좋아요 수: <span th:text="${cocktail.likesCount}"></span></p>
+        <p>레시피 1: <span th:text="${cocktail.recipe1}"></span></p>
+        <p>레시피 2: <span th:text="${cocktail.recipe2}"></span></p>
+      </div>
+    </div>
+  </body>
+</html>

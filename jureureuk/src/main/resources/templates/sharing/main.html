@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/UI/png/main_Logo.png">
+    <title>주르륵</title>
+    <link rel="stylesheet" href="/UI/css/before_login.css">
+    <link rel="stylesheet" href="/UI/css/sharing/main.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- 메뉴와 검색창이 포함된 헤더 -->
+        <header class="top-menu">
+            <div class="menu-left">
+                <button class="logo-btn">
+                    <img src="/UI/png/main_Logo.png" alt="주르륵" class="logo-img">
+                    주르륵
+                </button>
+                <nav class="main-nav">
+                    <button class="nav-btn" onclick="window.location.href='/mainPage'">칵테일</button>
+                    <button class="nav-btn" onclick="window.location.href='/refrigerator/main'">나만의 냉장고</button>
+                    <button class="nav-btn active" onclick="window.location.href='/sharing/main'">레시피 공유</button>
+                </nav>
+            </div>
+            <div class="menu-right">
+                <input type="text" placeholder="칵테일, 또는 재료를 검색하세요" class="search-input">
+                <button class="fav-btn" onclick="window.location.href='/bookmark/main'">즐겨찾기</button>
+                <button class="profile-btn" onclick="window.location.href='/profile/main'">프로필</button>
+            </div>
+        </header>
+
+    </div>
+    </section>
+    </div>
+
+    <!DOCTYPE html>
+    <html lang="ko">
+    <!DOCTYPE html>
+    <html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>레시피 공유</title>
+    </head>
+
+    <body>
+        <!-- 상단 메뉴바 -->
+        <div class="container">
+            <!-- 상단 메뉴바 -->
+            <header class="top-menu">
+                <div class="filter-options">
+                    <!-- 필터 옵션 (전체, 1년, 1달) -->
+                    <button class="filter-btn active">전체</button>
+                    <button class="filter-btn">1년</button>
+                    <button class="filter-btn">1달</button>
+                </div>
+                <!-- 글쓰기 버튼 -->
+                <button class="right-btn" onclick="window.location.href='/sharing/write'">글쓰기</button>
+            </header>
+        </div>
+        <div class="container">
+            <!-- 인기순, 최신순 버튼 -->
+            <section class="sort-options">
+                <div class="sort-buttons">
+                    <button class="sort-btn active">인기순</button>
+                    <button class="sort-btn">최신순</button>
+                </div>
+            </section>
+
+            <!-- 레시피 목록 -->
+            <section class="recipe-list">
+                <div class="recipe-card">
+                    <img src="/UI/png/main_Logo.png" alt="레시피 이미지">
+                    <p>에비에이션</p>
+                </div>
+
+                <div class="recipe-card">
+                    <img src="/UI/png/main_Logo.png" alt="레시피 이미지">
+                    <p>아메리칸 레몬에이드</p>
+                </div>
+
+                <div class="recipe-card">
+                    <img src="/UI/png/main_Logo.png" alt="레시피 이미지">
+                    <p>다이키리</p>
+                </div>
+
+                <div class="recipe-card">
+                    <img src="/UI/png/main_Logo.png" alt="레시피 이미지">
+                    <p>피나 콜라다</p>
+                </div>
+
+                <div class="recipe-card">
+                    <img src="/UI/png/main_Logo.png" alt="레시피 이미지">
+                    <p>블러디 메리</p>
+                </div>
+
+                <div class="recipe-card">
+                    <img src="/UI/png/main_Logo.png" alt="레시피 이미지">
+                    <p>마티니</p>
+                </div>
+
+                <div class="recipe-card">
+                    <img src="/UI/png/main_Logo.png" alt="레시피 이미지">
+                    <p>네그로니</p>
+                </div>
+
+                <div class="recipe-card">
+                    <img src="/UI/png/main_Logo.png" alt="레시피 이미지">
+                    <p>쿠바 리브레</p>
+                </div>
+            </section>
+        </div>
+        <script src="/UI/js/sharing.js"></script>
+    </body>
+
+    </html>
