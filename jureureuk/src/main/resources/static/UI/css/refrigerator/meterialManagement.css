@@ -1,14 +1,13 @@
-.container {
-    max-width: 90%;
-    margin: 0 auto;
-}
 
 .header {
     display: flex;
     justify-content: flex-start;
     margin-bottom: 20px;
 }
-
+.container2 {
+    width: 90%;
+    margin: 0 auto;
+}
 .manage-btn {
     background-color: #4477ff;
     border: none;

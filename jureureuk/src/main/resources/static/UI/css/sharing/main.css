@@ -1,14 +1,13 @@
-.container {
+.container2 {
     width: 90%;
     margin: 0 auto;
 }
 
-.top-menu {
+.top-menu2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
-    background-color: #f9f9f9;
+    padding: 10px 0 0 0;
 }
 
 .filter-options {

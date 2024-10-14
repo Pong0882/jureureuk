@@ -22,15 +22,15 @@
                     주르륵
                 </button>
                 <nav class="main-nav">
-                    <button class="nav-btn" onclick="window.location.href='/mainPage'">칵테일</button>
-                    <button class="nav-btn" onclick="window.location.href='/refrigerator/main'">나만의 냉장고</button>
-                    <button class="nav-btn" onclick="window.location.href='/sharing/main'">레시피 공유</button>
+                    <button class="nav-btn" onclick="window.location.href='/main'">칵테일</button>
+                    <button class="nav-btn" onclick="window.location.href='/refrigerator'">나만의 냉장고</button>
+                    <button class="nav-btn" onclick="window.location.href='/sharing'">레시피 공유</button>
                 </nav>
             </div>
             <div class="menu-right">
                 <input type="text" placeholder="칵테일, 또는 재료를 검색하세요" class="search-input">
-                <button class="fav-btn" onclick="window.location.href='/bookmark/main'">즐겨찾기</button>
-                <button class="profile-btn" onclick="window.location.href='/profile/main'">프로필</button>
+                <button class="fav-btn" onclick="window.location.href='/bookmark'">즐겨찾기</button>
+                <button class="profile-btn" onclick="window.location.href='/profile'">프로필</button>
             </div>
         </header><!-- 인기 레시피 제목 및 기간 선택 -->
         <!--
@@ -40,18 +40,6 @@
             <button class="filter-btn">1달</button>
         </section>
     -->
-<h1 th:text="${cocktail.name}"></h1>
-
-    <div class="cocktail-card">
-        <img th:src="@{|/${cocktail.photo}|}" alt="칵테일 이미지" />
-        <p th:text="${cocktail.description}">칵테일 설명</p>
-        <p>좋아요 수: <span th:text="${cocktail.likesCount}">0</span></p>
-        <p>싫어요 수: <span th:text="${cocktail.dislikesCount}">0</span></p>
-        <p>즐겨찾기 수: <span th:text="${cocktail.bookmarkCount}">0</span></p>
-        <h3>레시피</h3>
-        <p th:text="${cocktail.recipe1}">레시피 1</p>
-        <p th:text="${cocktail.recipe2}">레시피 2</p>
-    </div>
 
     <div th:if="${message != null}">
         <p th:text="${message}"></p>
@@ -61,19 +49,18 @@
             <!-- Section 1: Image and cocktail information -->
             <div class="section1">
                 <div class="cocktail-image">
-                    <img src="/UI/png/main_Logo.png" alt="칵테일 이미지">
+                    <img th:src="@{|/${cocktail.photo}|}" alt="칵테일 이미지" />
                 </div>
                 <div class="cocktail-info">
-                    <h1>마가리타</h1>
-                    <ul>
-                        <li>잔의 립 부분을 소금으로 리밍해준다. 원하면 라임을 넣을 수도 있다.</li>
-                        <li>셰이커에 주재료와 얼음을 모두 넣고 잘 흔들어준다.</li>
-                        <li>얼음을 걸러내 차갑게 식힌 칵테일 잔에 따른다.</li>
-                    </ul>
+                    <h1 th:text="${cocktail.name}"></h1>
                     <div class="buttons">
-                        <button class="like-button">👍 267</button>
-                        <button class="fav-button">⭐ 즐겨찾기</button>
+                        <button class="like-button">👍 <span th:text="${cocktail.likesCount}">0</span></button>
+                        <button class="fav-button">⭐ <span th:text="${cocktail.bookmarkCount}">0</span></button>
                     </div>
+                    <ul>
+                        <p th:text="${cocktail.description}">칵테일 설명</p>
+                    </ul>
+                    
                 </div>
             </div>
 
@@ -96,25 +83,20 @@
             <div class="section3">
                 <div class="recipe-container">
                     <div class="button-container">
+        <h3>레시피</h3>
+        
                         <button id="iba-recipe-btn" class="recipe-btn active">IBA 레시피</button>
                         <button id="pro-recipe-btn" class="recipe-btn">조주기능사 레시피</button>
                     </div>
 
                     <div id="recipe-content">
                         <div id="iba-recipe" style="display: block;">
-                            <ul>
-                                <li>테킬라 1 2/3 oz</li>
-                                <li>트리플 섹 2/3 oz</li>
-                                <li>라임주스 1/2 oz</li>
-                                <li>도수: 33%</li>
+                            <ul><p th:text="${cocktail.recipe1}">레시피 1</p>
                             </ul>
                         </div>
 
                         <div id="pro-recipe" style="display: none;">
-                            <ul>
-                                <li>테킬라 1 1/2 oz</li>
-                                <li>트리플 섹 3/4 oz</li>
-                                <li>라임주스 1/4 oz</li>
+                            <ul><p th:text="${cocktail.recipe2}">레시피 2</p>
                             </ul>
                         </div>
                     </div>

@@ -12,6 +12,9 @@ import com.jureureuk.jureureuk.entity.Cocktail;
 
 @Repository
 public interface CocktailRepository extends JpaRepository<Cocktail, Integer> {
-    @Query("SELECT c FROM Cocktail c ORDER BY c.likesCount DESC")
-    List<Cocktail> findTop10ByLikesCount();
+    @Query("SELECT c FROM Cocktail c WHERE c.recipeType = 1 ORDER BY c.likesCount DESC")
+    List<Cocktail> findTop10ByLikesCount(); // 인기탑10
+
+    @Query("SELECT c FROM Cocktail c WHERE c.recipeType = 2 ORDER BY c.likesCount DESC")
+    List<Cocktail> findRandomTop10ByLikesCount(); // 랜덤탑10
 }

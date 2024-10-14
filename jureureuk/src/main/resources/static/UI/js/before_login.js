@@ -10,9 +10,6 @@ const top10Items = [
     '9 핑크 레이디',
     '10 롱 아일랜드 아이스티'
 ];
-
-let currentIndex = 0;
-
 function rotateTop10() {
     // 기존 텍스트에 사라지는 애니메이션 적용
     const top10Container = document.getElementById('top10-container');

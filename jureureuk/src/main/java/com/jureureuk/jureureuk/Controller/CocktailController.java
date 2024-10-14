@@ -39,7 +39,7 @@ public class CocktailController {
         } else {
             model.addAttribute("message", "칵테일 정보를 찾을 수 없습니다.");
         }
-        return "test"; // mojitoDetail.html로 포워드
+        return "cocktailInfo"; // mojitoDetail.html로 포워드
     }
 
     @GetMapping("/top")

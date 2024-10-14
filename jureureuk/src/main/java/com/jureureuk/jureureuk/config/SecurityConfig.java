@@ -14,7 +14,8 @@ public class SecurityConfig {
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                 http
                                 .authorizeHttpRequests(authorize -> authorize
-                                                .requestMatchers("/", "/UI/**", "/nickname/save", "/profile")
+                                                .requestMatchers("/", "/UI/**", "/nickname/save", "/profile",
+                                                                "/images/**")
                                                 .permitAll() // 특정 경로는
                                                 // 인증 없이
                                                 // 접근 허용

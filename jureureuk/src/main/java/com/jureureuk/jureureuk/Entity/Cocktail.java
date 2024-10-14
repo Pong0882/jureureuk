@@ -43,4 +43,7 @@ public class Cocktail {
 
     @Column(nullable = true)
     private String googleId; // 구글 아이디
+
+    @Column(nullable = true)
+    private Integer recipeType; // 레시피타입
 }

@@ -14,10 +14,14 @@ public class CocktailService {
     @Autowired
     private CocktailRepository cocktailRepository;
 
-    public List<Cocktail> getTop10CocktailsByLikes() {
+    public List<Cocktail> getTop10CocktailsByLikes() { // 인기탑10
         return cocktailRepository.findTop10ByLikesCount();
     }
-    
+
+    public List<Cocktail> getTop10RandomCocktailsByLikes() { // 랜덤탑10
+        return cocktailRepository.findRandomTop10ByLikesCount();
+    }
+
     // 칵테일 정보 저장
     public Cocktail saveCocktail(Cocktail cocktail) {
         return cocktailRepository.save(cocktail);

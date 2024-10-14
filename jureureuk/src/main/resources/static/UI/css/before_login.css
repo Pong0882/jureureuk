@@ -6,7 +6,7 @@ html {
 }
 
 .container {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 .recipe-container {
@@ -26,6 +26,7 @@ header.top-menu {
 
 .menu-left,
 .menu-right {
+    padding: 0 80px 0 80px;
     display: flex;
     align-items: center;
 }
@@ -130,6 +131,7 @@ header.top-menu {
 .top-recipes h2 {
     margin: 0;
     padding-left: 10px;
+    padding-bottom: 10px;
     white-space: nowrap;
 }
 
@@ -199,6 +201,10 @@ header.top-menu {
 /* 레시피 섹션 스타일 */
 .recipe-section {
     margin: 40px 0;
+    padding: 0 20px;
+}
+.recipe-section2 {
+    margin:  0;
     padding: 0 20px;
 }
 
@@ -340,3 +346,9 @@ header.top-menu {
     margin-left: 20px;
 }
 
+.recipe-container a {
+    text-decoration: none;
+    /* 밑줄 제거 */
+    color: inherit;
+    /* 부모 요소의 색상 상속 (기본 링크 색상 변경) */
+}

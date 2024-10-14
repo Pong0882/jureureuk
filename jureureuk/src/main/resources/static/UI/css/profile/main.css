@@ -2,8 +2,12 @@
     max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
+    width: 90%;
 }
-
+.container2 {
+    width: 90%;
+    margin: 0 auto;
+}
 .profile-info {
     display: flex;
     align-items: center;

@@ -22,81 +22,56 @@
                 </button>
                 <nav class="main-nav">
                     <button class="nav-btn active">칵테일</button>
-                    <button class="nav-btn" onclick="window.location.href='/refrigerator/main'">나만의 냉장고</button>
-                    <button class="nav-btn" onclick="window.location.href='/sharing/main'">레시피 공유</button>
+                    <button class="nav-btn" onclick="window.location.href='/refrigerator'">나만의 냉장고</button>
+                    <button class="nav-btn" onclick="window.location.href='/sharing'">레시피 공유</button>
                 </nav>
             </div>
             <div class="menu-right">
                 <input type="text" placeholder="칵테일, 또는 재료를 검색하세요" class="search-input">
-                <button class="fav-btn" onclick="window.location.href='/bookmark/main'">즐겨찾기</button>
+                <button class="fav-btn" onclick="window.location.href='/bookmark'">즐겨찾기</button>
                 <button class="profile-btn" onclick="window.location.href='/profile'">프로필</button>
             </div>
         </header>
 
-        <body>
-            <section class="top-recipes">
-                <h2>금주의 Top 10</h2>
-                <div id="top10-container">
-                    <p id="top10-item"></p>
-                </div>
-            </section>
-            <!-- 외부 JavaScript 파일 연결 -->
-            <script src="UI/js/before_login.js"></script>
-
+    </head>
+    
+    <body>
+        <section class="top-recipes">
+            <h2>금주의 Top 10</h2>
+            <div id="top10-container">
+                <p id="top10-item"></p>
+            </div>
+        </section>
+        
+        <script src="/UI/js/before_login.js"></script>
     </div>
     </section>
     </div>
 
-    <div class="recipe-section"></div>
-    <!-- 랜덤 레시피 -->
+    <div class="recipe-section2">
     <div class="section-header">
         <h2>랜덤 레시피</h2>
-        <button class="more-btn" onclick="window.location.href='/more/randomMore'">더보기</button>
+        <button class="more-btn" onclick="window.location.href='./more/randomMore'">더보기</button>
     </div>
     <div class="recipe-slider">
         <div class="recipe-container">
             <!-- 각 레시피 카드 -->
-            <div class="recipe-card" onclick="window.location.href='./cocktail'">
-                <img src="UI/png/main_logo.png" alt="화이트 러시안 드림">
-                <p>화이트 러시안 드림</p>
+            <div th:each="cocktail : ${cocktails2}">
+                <a th:href="@{/cocktail/{id}(id=${cocktail.id})}">
+                <div class="recipe-card">
+                     <div class="recipe-image">
+                    <img th:src="@{${cocktail.photo}}" th:alt="${cocktail.name}">
+                     </div>
+                    <div class="recipe-name">       
+                    <p th:text="${cocktail.name}"></p>
+                    </div>
+                
+                </div>
             </div>
-            <div class="recipe-card">
-                <img src="UI/png/main_logo.png" alt="피치 드림">
-                <p>피치 드림</p>
-            </div>
-            <div class="recipe-card">
-                <img src="UI/png/main_logo.png" alt="사과 마가리타">
-                <p>사과 마가리타</p>
-            </div>
-            <div class="recipe-card">
-                <img src="UI/png/main_logo.png" alt="화이트 러시안 드림">
-                <p>화이트 러시안 드림</p>
-            </div>
-            <div class="recipe-card">
-                <img src="UI/png/main_logo.png" alt="피치 드림">
-                <p>피치 드림</p>
-            </div>
-            <div class="recipe-card">
-                <img src="UI/png/main_logo.png" alt="사과 마가리타">
-                <p>사과 마가리타</p>
-            </div>
-            <div class="recipe-card">
-                <img src="UI/png/main_logo.png" alt="화이트 러시안 드림">
-                <p>화이트 러시안 드림</p>
-            </div>
-            <div class="recipe-card">
-                <img src="UI/png/main_logo.png" alt="피치 드림">
-                <p>피치 드림</p>
-            </div>
-            <div class="recipe-card">
-                <img src="UI/png/main_logo.png" alt="사과 마가리타">
-                <p>사과 마가리타</p>
-            </div>
-            <!-- 추가 카드들 -->
         </div>
     </div>
-    </div>
-
+</div>
+</a>
     <!-- 인기 레시피 (구조 동일) -->
 <div class="recipe-section">
     <div class="section-header">
@@ -107,6 +82,7 @@
         <div class="recipe-container">
             <!-- 각 레시피 카드 -->
             <div th:each="cocktail : ${cocktails}">
+                <a th:href="@{/cocktail/{id}(id=${cocktail.id})}">
                 <div class="recipe-card">
                      <div class="recipe-image">
                     <img th:src="@{${cocktail.photo}}" th:alt="${cocktail.name}">
