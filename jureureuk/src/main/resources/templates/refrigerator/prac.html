@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>재료 관리</title>
+  </head>
+  <body>
+    <h1>재료 관리 페이지</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>이름</th>
+          <th>사진</th>
+          <th>설명</th>
+          <th>도수</th>
+          <th>종류</th>
+          <th>영어 이름</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="ingredient : ${ingredients}">
+          <td th:text="${ingredient.id}"></td>
+          <td th:text="${ingredient.name}"></td>
+          <td>
+            <img
+              th:src="@{${ingredient.photo}}"
+              alt="재료 이미지"
+              width="100"
+            />
+          </td>
+          <td th:text="${ingredient.description}"></td>
+          <td th:text="${ingredient.proof}"></td>
+          <td th:text="${ingredient.type}"></td>
+          <td th:text="${ingredient.nameEn}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

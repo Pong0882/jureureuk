@@ -62,30 +62,59 @@
                 <button class="filter-btn">기타</button>
             </section>
 
-            <!-- 재료 목록 -->
-            <section class="ingredient-list">
-                <div class="ingredient-card">
-                    <img src="/UI/png/tequila.jpg" alt="테킬라 골드">
-                    <p>테킬라 골드</p>
-                    <input type="checkbox" class="ingredient-checkbox" checked>
-                </div>
-                <div class="ingredient-card">
-                    <img src="/UI/png/tequila.jpg" alt="트리플 섹">
-                    <p>트리플 섹</p>
-                    <input type="checkbox" class="ingredient-checkbox">
-                </div>
-                <div class="ingredient-card">
-                    <img src="/UI/png/tequila.jpg" alt="라임 주스">
-                    <p>라임 주스</p>
-                    <input type="checkbox" class="ingredient-checkbox">
-                </div>
-            </section>
+<!-- 재료 목록 -->
+<section class="ingredient-list">
+    <div th:each="ingredient : ${missingIngredients}" class="ingredient-card">
+        <div class="ingredient-image" 
+             th:onclick="'window.location.href=\'/refrigerator/MaterialInfo?id=' + ${ingredient.id} + '\''">
+            <img th:src="@{${ingredient.photo}}" th:alt="${ingredient.name}" style="cursor: pointer;">
+        </div>
+        <div class="ingredient-name">
+            <p th:text="${ingredient.name}" style="cursor: pointer;"
+               th:onclick="'window.location.href=\'/refrigerator/MaterialInfo?id=' + ${ingredient.id} + '\''"></p>
+        </div>
+        <div class="ingredient-checkbox">
+            <input type="checkbox" class="ingredient-checkbox" th:value="${ingredient.id}" 
+                   onclick="event.stopPropagation();"> <!-- 이벤트 전파 방지 -->
+        </div>
+    </div>
+</section>
 
-            <!-- 휴지통 아이콘 -->
-            <div class="trash-bin">
-                <img src="/UI/png/cart.png" alt="휴지통">
-            </div>
 
-        </body>
+<!-- 장바구니 아이콘 -->
+<div class="trash-bin">
+    <img src="/UI/png/cart.png" alt="장바구니" onclick="submitIngredients()">
+</div>
+
+<script>
+    // 선택한 재료를 서버로 전송하는 함수
+    function submitIngredients() {
+        const checkboxes = document.querySelectorAll('.ingredient-checkbox:checked');
+        const ingredientIds = Array.from(checkboxes).map(checkbox => checkbox.value);
+
+        if (ingredientIds.length === 0) {
+            alert("선택된 재료가 없습니다.");
+            return;
+        }
+
+        // 서버에 데이터 전송
+        fetch("/refrigerator/api/save-ingredients", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ ingredients: ingredientIds })
+        })
+        .then(response => response.text())
+        .then(message => {
+            alert(message); // 쇼핑 완료 메시지 출력
+            window.location.reload(); // 새로고침
+        })
+        .catch(error => {
+            console.error("에러 발생:", error);
+            alert("서버 오류가 발생했습니다.");
+        });
+    }
+</script>
 
 </html>

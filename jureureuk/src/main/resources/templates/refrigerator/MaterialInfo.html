@@ -35,17 +35,20 @@
         </header><!-- 인기 레시피 제목 및 기간 선택 -->
 <body>
     <div class="container2">
-        <button class="back-btn" onclick="window.location.href='previous_page'">뒤로가기</button>
+        <button class="back-btn" onclick="window.location.href='/refrigerator/materialManagement'">뒤로가기</button>
+
+
         <!-- 상단 재료 설명 부분 -->
-        <div class="header-row">
-            <div class="ingredient-info">
-                <img src="/UI/png/tequila.jpg" alt="데킬라 골드 이미지" class="ingredient-img">
-                <div class="ingredient-description">
-                    <h2>데킬라 골드</h2>
-                    <p>데킬라는 음료의 이름으로 메시코 데킬라 지방에서 재배되는 아가베로 만든 술로, 골드 데킬라는 이중 증류와 오크통에서 숙성시키는 특징이 있다.</p>
-                </div>
+    <div class="header-row">
+        <div class="ingredient-info">
+            <!-- 동적으로 이미지 경로와 설명 출력 -->
+            <img th:src="@{${ingredient.photo}}" th:alt="${ingredient.name}">
+            <div class="ingredient-description">
+                <h2 th:text="${ingredient.name}"></h2>
+                <p th:text="${ingredient.description}"></p>
             </div>
         </div>
+    </div>
 
         <!-- 칵테일 목록과 필터 -->
         <div class="recipe-section">

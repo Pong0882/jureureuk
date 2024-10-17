@@ -30,6 +30,13 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+    width: 70%;
+        /* 화면의 70% 사용 */
+        max-width: 1200px;
+        /* 최대 너비 설정 */
+        margin: 0 auto;
+        /* 수평 가운데 정렬 */
 }
 
 .ingredient-img {
@@ -82,4 +89,15 @@
     width: 100%;
     height: auto;
     object-fit: cover;
+}
+
+.ingredient-info img {
+    height: 300px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    /* 모서리를 둥글게 하고 싶을 때 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* 그림자 추가 */
+    
 }

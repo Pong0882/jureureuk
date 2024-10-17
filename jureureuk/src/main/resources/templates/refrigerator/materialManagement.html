@@ -62,30 +62,61 @@
                 <button class="filter-btn">기타</button>
             </section>
 
-            <!-- 재료 목록 -->
-            <section class="ingredient-list">
-                <div class="ingredient-card" onclick="window.location.href='/refrigerator/MaterialInfo'">
-                    <img src="/UI/png/tequila.jpg" alt="테킬라 골드">
-                    <p>테킬라 골드</p>
-                    <input type="checkbox" class="ingredient-checkbox" checked>
-                </div>
-                <div class="ingredient-card">
-                    <img src="/UI/png/tequila.jpg" alt="트리플 섹">
-                    <p>트리플 섹</p>
-                    <input type="checkbox" class="ingredient-checkbox">
-                </div>
-                <div class="ingredient-card">
-                    <img src="/UI/png/tequila.jpg" alt="라임 주스">
-                    <p>라임 주스</p>
-                    <input type="checkbox" class="ingredient-checkbox">
-                </div>
-            </section>
 
-            <!-- 휴지통 아이콘 -->
-            <div class="trash-bin">
-                <img src="/UI/png/trash.png" alt="휴지통">
-            </div>
 
-        </body>
+           <section class="ingredient-list">
+    <div th:each="ingredient : ${userIngredients}" class="ingredient-card">
+        <div class="ingredient-image" 
+             th:onclick="'window.location.href=\'/refrigerator/MaterialInfo?id=' + ${ingredient.id} + '\''">
+            <img th:src="@{${ingredient.photo}}" th:alt="${ingredient.name}" style="cursor: pointer;">
+        </div>
+        <div class="ingredient-name">
+            <p th:text="${ingredient.name}" style="cursor: pointer;"
+               th:onclick="'window.location.href=\'/refrigerator/MaterialInfo?id=' + ${ingredient.id} + '\''"></p>
+        </div>
+        <div class="ingredient-checkbox">
+            <input type="checkbox" class="ingredient-checkbox" th:value="${ingredient.id}"> <!-- checked 속성 제거 -->
+        </div>
+    </div>
+</section>
+
+
+<!-- 휴지통 아이콘 -->
+<div class="trash-bin" onclick="deleteSelectedIngredients()">
+    <img src="/UI/png/trash.png" alt="휴지통">
+</div>
+
+<script>
+function deleteSelectedIngredients() {
+    const checkboxes = document.querySelectorAll('.ingredient-checkbox:checked');
+    const ingredientIds = Array.from(checkboxes).map(cb => cb.value);
+    
+    if (ingredientIds.length === 0) {
+        alert('삭제할 재료를 선택해 주세요.');
+        return;
+    }
+
+    fetch('/refrigerator/api/delete-ingredients', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ingredients: ingredientIds })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('버리기 완료');
+            location.reload(); // 페이지 새로 고침
+        } else {
+            alert('서버 오류 발생1');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('서버 오류 발생2');
+    });
+}
+</script>
+
 
 </html>

@@ -30,7 +30,7 @@
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
                 <script src="https://apis.google.com/js/platform.js" async defer></script>
-                <div class="google-login-button" onclick="window.location.href='https://af2d-175-202-158-210.ngrok-free.app/oauth2/authorization/google'">
+                <div class="google-login-button" onclick="window.location.href='https://0d5f-175-202-158-210.ngrok-free.app/oauth2/authorization/google'">
                     <img src="/UI/png/icon-google.png" alt="Google Login">
                     <span>로그인</span>
                 </div>
@@ -53,7 +53,7 @@
     </section>
     </div>
 
-   <div class="recipe-section">
+   <div class="recipe-section2">
     <div class="section-header">
         <h2>랜덤 레시피</h2>
         <button class="more-btn" onclick="window.location.href='./more/randomMore'">더보기</button>
@@ -62,6 +62,7 @@
         <div class="recipe-container">
             <!-- 각 레시피 카드 -->
             <div th:each="cocktail : ${cocktails2}">
+                <a th:href="@{/cocktail/{id}(id=${cocktail.id})}">
                 <div class="recipe-card">
                      <div class="recipe-image">
                     <img th:src="@{${cocktail.photo}}" th:alt="${cocktail.name}">
@@ -69,11 +70,13 @@
                     <div class="recipe-name">       
                     <p th:text="${cocktail.name}"></p>
                     </div>
+                
                 </div>
             </div>
         </div>
     </div>
 </div>
+</a>
     <!-- 인기 레시피 (구조 동일) -->
 <div class="recipe-section">
     <div class="section-header">
