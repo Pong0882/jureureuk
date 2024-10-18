@@ -90,6 +90,12 @@ cursor: pointer;
 
 .ingredient-card input[type="checkbox"] {
     margin-top: 10px;
+            width: 20px;
+            height: 20px;
+            transform: scale(1.5);
+            /* 크기를 1.5배 키움 */
+            cursor: pointer;
+            /* 클릭 시 손가락 커서로 변경 */
 }
 
 .trash-icon {
@@ -180,3 +186,4 @@ cursor: pointer;
 .shop-btn:hover {
     background-color: #255aca;
 }
+

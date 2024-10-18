@@ -19,7 +19,6 @@ import lombok.Setter;
 @Entity
 @Table(name = "user_ingredient")
 public class UserIngredient {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // 자동 증가 ID

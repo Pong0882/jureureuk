@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jureureuk.jureureuk.entity.Ingredient;
 import com.jureureuk.jureureuk.entity.UserIngredient;
@@ -23,7 +24,9 @@ public interface UserIngredientRepository extends JpaRepository<UserIngredient, 
             "(SELECT ui.ingredient.id FROM UserIngredient ui WHERE ui.googleId = :email)")
     List<Ingredient> findMissingIngredientsByEmail(@Param("email") String email);
 
-    @Modifying // 유저 재료 삭제
+    // 유저 재료 삭제 (쿼리 수정)
+    @Modifying
+    @Transactional
     @Query("DELETE FROM UserIngredient ui WHERE ui.googleId = :googleId AND ui.ingredient.id = :ingredientId")
     void deleteByGoogleIdAndIngredientId(@Param("googleId") String googleId, @Param("ingredientId") Long ingredientId);
 }

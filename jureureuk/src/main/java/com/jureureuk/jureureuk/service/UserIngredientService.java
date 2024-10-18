@@ -2,6 +2,7 @@ package com.jureureuk.jureureuk.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jureureuk.jureureuk.entity.Ingredient;
@@ -10,6 +11,8 @@ import com.jureureuk.jureureuk.repository.UserIngredientRepository;
 
 @Service
 public class UserIngredientService {
+
+    @Autowired
     private final UserIngredientRepository userIngredientRepository;
 
     public UserIngredientService(UserIngredientRepository userIngredientRepository) {
@@ -30,12 +33,16 @@ public class UserIngredientService {
     }
 
     public void deleteUserIngredient(String googleId, Long ingredientId) {
-        // UserIngredient 엔티티를 찾아서 삭제하는 로직을 구현합니다.
-        userIngredientRepository.deleteByGoogleIdAndIngredientId(googleId, ingredientId);
+        try {
+            userIngredientRepository.deleteByGoogleIdAndIngredientId(googleId, ingredientId);
+        } catch (Exception e) {
+            e.printStackTrace(); // 예외 로그 출력
+        }
     }
 
     public void saveUserIngredient(String googleId, Ingredient ingredient) {
         UserIngredient userIngredient = new UserIngredient(googleId, ingredient);
         userIngredientRepository.save(userIngredient); // 저장
     }
+
 }

@@ -97,20 +97,23 @@ public class RefrigeratorController {
             OAuth2AuthenticationToken authentication) {
         try {
             String email = authentication.getPrincipal().getAttribute("email");
-            List<Long> ingredientIds = request.get("ingredients"); // {"ingredients": [1, 2, 3]} 형태로 전달받음
+            List<Long> ingredientIds = request.get("ingredients");
+
+            // 로그 추가
+            System.out.println("사용자 이메일: " + email);
+            System.out.println("삭제할 재료 ID 목록: " + ingredientIds);
 
             if (ingredientIds == null || ingredientIds.isEmpty()) {
                 return ResponseEntity.badRequest().body("삭제할 재료 목록이 비어 있습니다.");
             }
 
-            // 사용자가 보유한 재료를 삭제하는 로직
             for (Long id : ingredientIds) {
                 userIngredientService.deleteUserIngredient(email, id);
             }
 
             return ResponseEntity.ok("재료 삭제 완료");
         } catch (Exception e) {
-            e.printStackTrace(); // 에러 메시지를 콘솔에 출력
+            e.printStackTrace(); // 오류 메시지를 로그에 출력
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 오류 발생");
         }
     }
@@ -139,5 +142,4 @@ public class RefrigeratorController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 오류가 발생했습니다.");
         }
     }
-
 }

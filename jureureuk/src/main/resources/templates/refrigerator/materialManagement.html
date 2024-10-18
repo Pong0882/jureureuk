@@ -90,7 +90,9 @@
 function deleteSelectedIngredients() {
     const checkboxes = document.querySelectorAll('.ingredient-checkbox:checked');
     const ingredientIds = Array.from(checkboxes).map(cb => cb.value);
-    
+
+    console.log('선택된 재료 IDs:', ingredientIds); // 로그 추가
+
     if (ingredientIds.length === 0) {
         alert('삭제할 재료를 선택해 주세요.');
         return;
@@ -116,6 +118,7 @@ function deleteSelectedIngredients() {
         alert('서버 오류 발생2');
     });
 }
+
 </script>
 
 
