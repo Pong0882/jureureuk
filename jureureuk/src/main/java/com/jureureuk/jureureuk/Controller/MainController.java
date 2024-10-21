@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jureureuk.jureureuk.entity.Cocktail;
 import com.jureureuk.jureureuk.service.CocktailService;
@@ -89,45 +90,27 @@ public class MainController {
     }
 
     @GetMapping("/more/randomMore")
-    public String randomMore() {
+    public String randomMore(Model model) {
+        List<Cocktail> randomMore = cocktailService.getRecentType2Cocktails();
+
+        model.addAttribute("cocktails", randomMore);
         // 소개 페이지로 이동
         return "more/randomMore";
     }
 
     @GetMapping("/more/popularMore")
-    public String popularMore() {
+    public String popularMore(Model model) {
+        List<Cocktail> poppularMore = cocktailService.findAllPopularCocktailsByLikes();
+
+        model.addAttribute("cocktails", poppularMore);
         // 소개 페이지로 이동
         return "more/popularMore";
     }
 
-    // @GetMapping("/contact")
-    // public String contactPage() {
-    // // 연락처 페이지로 이동
-    // return "contact";
-    // }
-
-    // @GetMapping("/login")
-    // public String loginPage() {
-    // // 로그인 페이지로 이동
-    // return "login";
-    // }
-
-    // @GetMapping("/profile")
-    // public String profilePage(Model model) {
-    // // 프로필 페이지로 이동
-    // // 모델에 사용자 관련 정보를 추가할 수 있음
-    // return "profile";
-    // }
-
-    // @GetMapping("/cocktail")
-    // public String cocktailPage() {
-    // // 칵테일 리스트 페이지로 이동
-    // return "cocktail";
-    // }
-
-    // @GetMapping("/help")
-    // public String helpPage() {
-    // // 도움말 페이지로 이동
-    // return "help";
-    // }
+    // 상위 10개 칵테일을 반환하는 API
+    @GetMapping("/api/cocktails/top10")
+    @ResponseBody // JSON으로 응답
+    public List<Cocktail> getTop10Cocktails() {
+        return cocktailService.getTop10Cocktails();
+    }
 }

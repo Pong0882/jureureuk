@@ -1,10 +1,13 @@
 package com.jureureuk.jureureuk.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -46,4 +49,12 @@ public class Cocktail {
 
     @Column(nullable = true)
     private Integer recipeType; // 레시피타입
+
+    @Column(name = "created_at", updatable = false) // 등록 시간 필드 추가
+    private LocalDateTime createdAt;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now(); // 등록 시간 자동 기록
+    }
 }

@@ -149,27 +149,6 @@ header.top-menu {
     text-decoration: none;
 }
 
-@keyframes slide-in {
-    0% {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slide-out {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-}
 
 .google-login-button {
     display: inline-flex;
@@ -351,4 +330,60 @@ header.top-menu {
     /* 밑줄 제거 */
     color: inherit;
     /* 부모 요소의 색상 상속 (기본 링크 색상 변경) */
+}
+
+a {
+    text-decoration: none;
+    /* 밑줄 제거 */
+    color: inherit;
+    /* 부모 요소의 색상을 따름 */
+}
+
+a:hover {
+    text-decoration: none;
+    /* 호버 시에도 밑줄 제거 */
+    color: inherit;
+    /* 호버 시에도 색상 유지 */
+}
+
+
+/* 텍스트 컨테이너 스타일 */
+#top10-container {
+    overflow: hidden;
+    /* 넘치는 텍스트 숨김 */
+    height: 50px;
+    /* 컨테이너 높이 고정 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* 각 텍스트의 기본 스타일 */
+#top10-item {
+    position: absolute;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    opacity: 0;
+    /* 기본값: 보이지 않음 */
+    transform: translateY(100%);
+    /* 아래쪽에서 시작 */
+    transition: all 0.6s ease-in-out;
+    /* 부드러운 전환 효과 */
+    cursor: pointer;
+}
+
+/* 새 텍스트가 아래에서 위로 등장 */
+#top10-item.show {
+    opacity: 1;
+    transform: translateY(0);
+    /* 제자리로 이동 */
+}
+
+/* 이전 텍스트가 위로 사라짐 */
+#top10-item.hide {
+    opacity: 0;
+    transform: translateY(-100%);
+    /* 위로 이동해 사라짐 */
 }

@@ -45,31 +45,23 @@
     -->
         <!-- 인기 레시피 카드 섹션 -->
         <section class="recipe-section">
-            <div class="recipe-grid">
-                <!-- 레시피 카드 -->
-                <div class="recipe-card">
-                    <img src="/UI/png/main_Logo.png" alt="마가리타">
-                    <p>마가리타</p>
+    <div class="recipe-grid">
+        <!-- 레시피 카드 -->
+        <div th:each="cocktail : ${cocktails}" class="recipe-card">
+            <a th:href="@{/cocktail/{id}(id=${cocktail.id})}">
+                    <div class="recipe-image">
+                    <img th:src="@{${cocktail.photo}}" th:alt="${cocktail.name}">
                 </div>
-                <div class="recipe-card">
-                    <img src="/UI/png/main_Logo.png" alt="네그로니">
-                    <p>네그로니</p>
+                <div class="recipe-name">
+                    <p th:text="${cocktail.name}"></p>
                 </div>
-                <div class="recipe-card">
-                    <img src="/UI/png/main_Logo.png" alt="마이타이">
-                    <p>마이타이</p>
-                </div>
-                <div class="recipe-card">
-                    <img src="/UI/png/main_Logo.png" alt="롱 아일랜드 아이스티">
-                    <p>롱 아일랜드 아이스티</p>
-                </div>
-                <div class="recipe-card">
-                    <img src="/UI/png/main_Logo.png" alt="코스모폴리탄">
-                    <p>코스모폴리탄</p>
-                </div>
-                <!-- 더 많은 레시피들 추가 가능 -->
             </div>
-        </section>
+            </a>
+        </div>
+        <!-- 더 많은 레시피들 추가 가능 -->
+    </div>
+</section>
+
         
         </div>
         </body>

@@ -47,65 +47,50 @@
         </div>
       </header>
       <!-- 랜덤 레시피 페이지 제목 -->
-      <section class="random-recipe-header">
-        <h1>랜덤 레시피</h1>
-      </section>
 
-      <!-- 역대 인기 순위 섹션 -->
       <section class="popular-rank-section">
-        <h2>역대 인기 순위</h2>
+        <h2>금주의 랜덤 레시피</h2>
         <div class="recipe-grid">
           <!-- 상위 5개 레시피 표시 -->
-          <div class="recipe-card">
-            <img src="/UI/png/main_Logo.png" alt="화이트 러시안 드림" />
-            <p>화이트 러시안 드림</p>
-          </div>
-          <div class="recipe-card">
-            <img src="/UI/png/main_Logo.png" alt="피치 드림" />
-            <p>피치 드림</p>
-          </div>
-          <div class="recipe-card">
-            <img src="/UI/png/main_Logo.png" alt="사과 마가리타" />
-            <p>사과 마가리타</p>
-          </div>
-          <div class="recipe-card">
-            <img src="/UI/png/main_Logo.png" alt="딸기 프렌치" />
-            <p>딸기 프렌치</p>
-          </div>
-          <div class="recipe-card">
-            <img src="/UI/png/main_Logo.png" alt="레몬 스카치" />
-            <p>레몬 스카치</p>
+          <div th:each="cocktail : ${cocktails}" class="recipe-card">
+            <a th:href="@{/cocktail/{id}(id=${cocktail.id})}">
+              <div class="recipe-image">
+                <img th:src="@{${cocktail.photo}}" th:alt="${cocktail.name}" />
+              </div>
+            </a>
+            <div class="recipe-name">
+              <a
+                th:href="@{/cocktail/{id}(id=${cocktail.id})}"
+                style="text-decoration: none; color: inherit"
+              >
+                <p th:text="${cocktail.name}"></p>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- 날짜별 인기 순위 섹션 -->
-      <section class="weekly-rank-section">
-        <h2>2024/03/24 ~ 2024/03/30 순위</h2>
+      <section class="popular-rank-section">
+        <h2>역대 랜덤 인기 레시피</h2>
         <div class="recipe-grid">
-          <!-- 1주일 기간에 대한 상위 5개 레시피 -->
-          <div class="recipe-card">
-            <img src="/UI/png/main_Logo.png" alt="화이트 러시안 드림" />
-            <p>화이트 러시안 드림</p>
-          </div>
-          <div class="recipe-card">
-            <img src="/UI/png/main_Logo.png" alt="피치 드림" />
-            <p>피치 드림</p>
-          </div>
-          <div class="recipe-card">
-            <img src="/UI/png/main_Logo.png" alt="사과 마가리타" />
-            <p>사과 마가리타</p>
-          </div>
-          <div class="recipe-card">
-            <img src="/UI/png/main_Logo.png" alt="딸기 프렌치" />
-            <p>딸기 프렌치</p>
-          </div>
-          <div class="recipe-card">
-            <img src="/UI/png/main_Logo.png" alt="레몬 스카치" />
-            <p>레몬 스카치</p>
+          <!-- 상위 5개 레시피 표시 -->
+          <div th:each="cocktail : ${cocktails}" class="recipe-card">
+            <a th:href="@{/cocktail/{id}(id=${cocktail.id})}">
+              <div class="recipe-image">
+                <img th:src="@{${cocktail.photo}}" th:alt="${cocktail.name}" />
+              </div>
+            </a>
+            <div class="recipe-name">
+              <a
+                th:href="@{/cocktail/{id}(id=${cocktail.id})}"
+                style="text-decoration: none; color: inherit"
+              >
+                <p th:text="${cocktail.name}"></p>
+              </a>
+            </div>
           </div>
         </div>
-      </section>
     </div>
   </body>
 </html>

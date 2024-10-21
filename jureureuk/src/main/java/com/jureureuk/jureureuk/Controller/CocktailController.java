@@ -21,14 +21,8 @@ public class CocktailController {
     @Autowired
     private CocktailService cocktailService;
 
-    @GetMapping("")
-    public String main(Model model) {
-        model.addAttribute("cocktails", cocktailService.getCocktailById(1));
-        return "forward:/UI/html/cocktail/main.html";
-    }
-
     @GetMapping("/{id}")
-    public String showCocktailById(@PathVariable("id") int id, Model model) {
+    public String showCocktailById(@PathVariable("id") Long id, Model model) {
         Cocktail cocktail = cocktailService.getCocktailById(id);
 
         if (cocktail != null) {
@@ -39,7 +33,21 @@ public class CocktailController {
         } else {
             model.addAttribute("message", "칵테일 정보를 찾을 수 없습니다.");
         }
-        return "cocktailInfo"; // mojitoDetail.html로 포워드
+        return "cocktail/cocktailInfo"; // mojitoDetail.html로 포워드
+    }
+
+    // 좋아요 수 증가 처리
+    @PostMapping("/{id}/like")
+    public String updateLike(@PathVariable("id") Long id) {
+        cocktailService.incrementLikeCount(id);
+        return "redirect:/cocktail/" + id; // 성공 시 상세 페이지로 리다이렉트
+    }
+
+    // 즐겨찾기 수 증가 처리
+    @PostMapping("/{id}/bookmark")
+    public String updateBookmark(@PathVariable("id") Long id) {
+        cocktailService.incrementBookmarkCount(id);
+        return "redirect:/cocktail/" + id; // 성공 시 상세 페이지로 리다이렉트
     }
 
     @GetMapping("/top")

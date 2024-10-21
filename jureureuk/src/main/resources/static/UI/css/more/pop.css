@@ -59,29 +59,42 @@ html {
     /* 카드들을 가운데 정렬 */
 }
 
+
 .recipe-card {
     width: 150px;
-    height: auto;
-    /* 카드의 높이를 자동으로 조정 */
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    overflow: hidden;
+    height: 250px;
+    /* 카드의 높이를 고정 */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: white;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-between;
-    /* 불필요한 여백을 없애고 위아래로 요소 정렬 */
+    /* 요소를 위아래로 정렬 */
+    padding: 10px;
+    transition: transform 0.2s;
+    /* 마우스 호버 시 확대 효과 */
+}
+.recipe-image {
+    width: 150px;
+    height: 220px;
+    border-radius: 15px;
+    overflow: hidden;
+    /* 이미지가 컨테이너 밖으로 나가지 않게 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.recipe-card img {
+.recipe-image img {
     width: 100%;
-    height: 150px;
-    /* 이미지의 높이를 고정 */
-    object-fit: contain;
-    border-bottom: 1px solid #ddd;
+    height: 100%;
+    object-fit: cover;
+    /* 이미지가 비율에 맞게 채워지도록 */
+    border-radius: 15px;
 }
-
 .recipe-card p {
     padding: 10px;
     /* 칵테일 이름의 상하 여백을 줄임 */
@@ -168,3 +181,4 @@ html {
 .filter-btn:hover {
     text-decoration: underline;
 }
+
