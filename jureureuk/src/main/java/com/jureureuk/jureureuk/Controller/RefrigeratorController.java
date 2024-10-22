@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jureureuk.jureureuk.entity.Cocktail;
 import com.jureureuk.jureureuk.entity.Ingredient;
 import com.jureureuk.jureureuk.repository.CocktailRepository;
+import com.jureureuk.jureureuk.repository.IngredientRepository;
+import com.jureureuk.jureureuk.repository.UserIngredientRepository;
 import com.jureureuk.jureureuk.service.CocktailService;
 import com.jureureuk.jureureuk.service.IngredientService;
 import com.jureureuk.jureureuk.service.UserIngredientService;
@@ -36,6 +38,8 @@ public class RefrigeratorController {
     private final UserIngredientService userIngredientService;
     private final CocktailRepository cocktailRepository;
     private final CocktailService cocktailService;
+    private final UserIngredientRepository userIngredientRepository;
+    private final IngredientRepository ingredientRepository;
 
     // 생성자 주입을 통해 의존성 주입
     @Autowired
@@ -43,11 +47,15 @@ public class RefrigeratorController {
             IngredientService ingredientService,
             UserIngredientService userIngredientService,
             CocktailRepository cocktailRepository,
-            CocktailService cocktailService) {
+            CocktailService cocktailService,
+            UserIngredientRepository userIngredientRepository,
+            IngredientRepository ingredientRepository) {
         this.ingredientService = ingredientService;
         this.userIngredientService = userIngredientService;
         this.cocktailRepository = cocktailRepository;
         this.cocktailService = cocktailService;
+        this.userIngredientRepository = userIngredientRepository;
+        this.ingredientRepository = ingredientRepository;
     }
 
     @GetMapping("")
@@ -176,4 +184,19 @@ public class RefrigeratorController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 오류가 발생했습니다.");
         }
     }
+
+    // API: 사용자의 재료를 타입별로 필터링
+    @GetMapping("/api/ingredients")
+    public ResponseEntity<List<Ingredient>> getUserIngredientsByType(
+            @RequestParam("type") String type,
+            OAuth2AuthenticationToken authentication) {
+
+        String googleId = authentication.getPrincipal().getAttribute("email");
+
+        // 서비스 호출: 타입에 따라 적절한 메서드 실행
+        List<Ingredient> ingredients = userIngredientService.getUserIngredientsByType(googleId, type);
+
+        return ResponseEntity.ok(ingredients);
+    }
+
 }

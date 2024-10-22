@@ -29,4 +29,12 @@ public interface UserIngredientRepository extends JpaRepository<UserIngredient, 
     @Transactional
     @Query("DELETE FROM UserIngredient ui WHERE ui.googleId = :googleId AND ui.ingredient.id = :ingredientId")
     void deleteByGoogleIdAndIngredientId(@Param("googleId") String googleId, @Param("ingredientId") Long ingredientId);
+
+    // Google ID로 사용자가 가진 재료 조회
+    List<UserIngredient> findByGoogleId(String googleId);
+
+    // Google ID와 재료 타입으로 재료 조회
+    @Query("SELECT ui.ingredient.id FROM UserIngredient ui WHERE ui.googleId = :googleId")
+    List<Long> findIngredientIdsByGoogleId(@Param("googleId") String googleId);
+
 }

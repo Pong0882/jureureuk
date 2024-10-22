@@ -42,20 +42,6 @@
     font-size: 14px;
 }
 
-.filter-btn-have {
-    background-color: #f1f1f1;
-    border: none;
-    padding: 10px 100px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.filter-btn-have.active {
-    background-color: #b8b8b8;
-    font-weight: bolder;
-}
-
 .filter-btn.active {
     background-color: #bcbcbc;
     font-weight: bolder;

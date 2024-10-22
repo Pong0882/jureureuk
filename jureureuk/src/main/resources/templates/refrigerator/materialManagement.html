@@ -1,125 +1,193 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/UI/png/main_Logo.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/UI/png/main_Logo.png" />
     <title>주르륵</title>
-    <link rel="stylesheet" href="/UI/css/before_login.css">
-    <link rel="stylesheet" href="/UI/css/refrigerator/meterialManagement.css">
+    <link rel="stylesheet" href="/UI/css/before_login.css" />
+    <link rel="stylesheet" href="/UI/css/refrigerator/meterialManagement.css" />
+  </head>
 
-
-</head>
-
-<body>
+  <body>
     <div class="container">
-        <!-- 메뉴와 검색창이 포함된 헤더 -->
-        <header class="top-menu">
-            <div class="menu-left">
-                <button class="logo-btn">
-                    <img src="/UI/png/main_Logo.png" alt="주르륵" class="logo-img">
-                    주르륵
-                </button>
-                <nav class="main-nav">
-                    <button class="nav-btn" onclick="window.location.href='/main'">칵테일</button>
-                    <button class="nav-btn" onclick="window.location.href='/refrigerator'">나만의 냉장고</button>
-                    <button class="nav-btn" onclick="window.location.href='/sharing'">레시피 공유</button>
-                </nav>
-            </div>
-            <div class="menu-right">
-                <input type="text" placeholder="칵테일, 또는 재료를 검색하세요" class="search-input">
-                <button class="fav-btn" onclick="window.location.href='/bookmark'">즐겨찾기</button>
-                <button class="profile-btn" onclick="window.location.href='/profile'">프로필</button>
-            </div>
-        </header><!-- 인기 레시피 제목 및 기간 선택 -->
-        <!--
-        <section class="filter-options">
-            <button class="filter-btn active">전체</button>
-            <button class="filter-btn">1년</button>
-            <button class="filter-btn">1달</button>
+      <header class="top-menu">
+        <div class="menu-left">
+          <button class="logo-btn">
+            <img src="/UI/png/main_Logo.png" alt="주르륵" class="logo-img" />
+            주르륵
+          </button>
+          <nav class="main-nav">
+            <button class="nav-btn" onclick="window.location.href='/main'">
+              칵테일
+            </button>
+            <button
+              class="nav-btn"
+              onclick="window.location.href='/refrigerator'"
+            >
+              나만의 냉장고
+            </button>
+            <button class="nav-btn" onclick="window.location.href='/sharing'">
+              레시피 공유
+            </button>
+          </nav>
+        </div>
+        <div class="menu-right">
+          <input
+            type="text"
+            placeholder="칵테일, 또는 재료를 검색하세요"
+            class="search-input"
+          />
+          <button class="fav-btn" onclick="window.location.href='/bookmark'">
+            즐겨찾기
+          </button>
+          <button class="profile-btn" onclick="window.location.href='/profile'">
+            프로필
+          </button>
+        </div>
+      </header>
+
+      <div class="container2">
+        <section class="ingredient-options">
+          <button
+            class="manage-btn"
+            onclick="window.location.href='/refrigerator'"
+          >
+            제작 가능 칵테일 보기
+          </button>
+          <button
+            class="shop-btn"
+            onclick="window.location.href='/refrigerator/shopping'"
+          >
+            쇼핑하기
+          </button>
         </section>
-    -->
 
-        <body>
-<div class="container2">
-            <!-- 제작 가능한 칵테일 보러가기 버튼 -->
-            <section class="ingredient-options">
-                <button class="manage-btn" onclick="window.location.href='/refrigerator'">제작 가능 칵테일 보기</button>
-
-                <button class="shop-btn" onclick="window.location.href='/refrigerator/shopping'">쇼핑하기</button>
-            </section>
-            <div class="center-label">
-                <h2>보유중인 재료</h2>
-            </div>
-
-            <!-- 필터 옵션 (보유중, 전체, 주류, 리큐르, 주스, 기타) -->
-            <section class="filter-options">
-                <button class="filter-btn active">전체</button>
-                <button class="filter-btn">주류</button>
-                <button class="filter-btn">리큐르</button>
-                <button class="filter-btn">주스</button>
-                <button class="filter-btn">기타</button>
-            </section>
-
-
-
-           <section class="ingredient-list">
-    <div th:each="ingredient : ${userIngredients}" class="ingredient-card">
-        <div class="ingredient-image" 
-             th:onclick="'window.location.href=\'/refrigerator/MaterialInfo?id=' + ${ingredient.id} + '\''">
-            <img th:src="@{${ingredient.photo}}" th:alt="${ingredient.name}" style="cursor: pointer;">
+        <div class="center-label">
+          <h2>보유중인 재료</h2>
         </div>
-        <div class="ingredient-name">
-            <p th:text="${ingredient.name}" style="cursor: pointer;"
-               th:onclick="'window.location.href=\'/refrigerator/MaterialInfo?id=' + ${ingredient.id} + '\''"></p>
+
+        <section class="filter-options">
+          <button class="filter-btn active" onclick="filterIngredients('all')">
+            전체
+          </button>
+          <button class="filter-btn" onclick="filterIngredients('base')">
+            주류
+          </button>
+          <button class="filter-btn" onclick="filterIngredients('liqueur')">
+            리큐르
+          </button>
+          <button class="filter-btn" onclick="filterIngredients('mixer')">
+            블렌더
+          </button>
+          <button class="filter-btn" onclick="filterIngredients('other')">
+            기타
+          </button>
+        </section>
+
+        <section class="ingredient-list">
+          <!-- JavaScript로 재료 목록이 동적으로 추가됩니다 -->
+        </section>
+
+        <div class="trash-bin" onclick="deleteSelectedIngredients()">
+          <img src="/UI/png/trash.png" alt="휴지통" />
         </div>
-        <div class="ingredient-checkbox">
-            <input type="checkbox" class="ingredient-checkbox" th:value="${ingredient.id}"> <!-- checked 속성 제거 -->
-        </div>
-    </div>
-</section>
+      </div>
 
+      <script>
+        // 모든 필터 버튼 가져오기
+        const filterButtons = document.querySelectorAll(".filter-btn");
 
-<!-- 휴지통 아이콘 -->
-<div class="trash-bin" onclick="deleteSelectedIngredients()">
-    <img src="/UI/png/trash.png" alt="휴지통">
-</div>
+        // 버튼 클릭 이벤트 처리
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            // 모든 버튼에서 'active' 클래스 제거
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
 
-<script>
-function deleteSelectedIngredients() {
-    const checkboxes = document.querySelectorAll('.ingredient-checkbox:checked');
-    const ingredientIds = Array.from(checkboxes).map(cb => cb.value);
+            // 클릭된 버튼에 'active' 클래스 추가
+            button.classList.add("active");
 
-    console.log('선택된 재료 IDs:', ingredientIds); // 로그 추가
+            // 선택된 타입 가져오기 (data-type 속성 사용)
+            const selectedType = button.getAttribute("data-type");
 
-    if (ingredientIds.length === 0) {
-        alert('삭제할 재료를 선택해 주세요.');
-        return;
-    }
+            // 해당 타입으로 필터링 로직 수행
+            filterIngredientsByType(selectedType);
+          });
+        });
 
-    fetch('/refrigerator/api/delete-ingredients', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ ingredients: ingredientIds })
-    })
-    .then(response => {
-        if (response.ok) {
-            alert('버리기 완료');
-            location.reload(); // 페이지 새로 고침
-        } else {
-            alert('서버 오류 발생1');
+        // 필터링 로직 (예시)
+        function filterIngredientsByType(type) {
+          console.log("Selected Type:", type);
+          // 여기에 필터링을 위한 API 호출 등을 수행합니다.
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('서버 오류 발생2');
-    });
-}
 
-</script>
+        ////////////////////////////////////////////////////////////////////////////////////
+        // 필터에 따라 재료를 서버에서 가져와서 표시
+        function filterIngredients(type) {
+          fetch(`/refrigerator/api/ingredients?type=${type}`)
+            .then((response) => response.json())
+            .then((data) => {
+              const ingredientList = document.querySelector(".ingredient-list");
+              ingredientList.innerHTML = ""; // 기존 내용 제거
 
+              data.forEach((ingredient) => {
+                const card = document.createElement("div");
+                card.className = "ingredient-card";
 
+                card.innerHTML = `
+                    <div class="ingredient-image" onclick="window.location.href='/refrigerator/MaterialInfo?id=${ingredient.id}'">
+                        <img src="${ingredient.photo}" alt="${ingredient.name}" style="cursor: pointer;">
+                    </div>
+                    <div class="ingredient-name">
+                        <p style="cursor: pointer;" onclick="window.location.href='/refrigerator/MaterialInfo?id=${ingredient.id}'">
+                            ${ingredient.name}
+                        </p>
+                    </div>
+                    <div class="ingredient-checkbox">
+                        <input type="checkbox" value="${ingredient.id}" class="ingredient-checkbox">
+                    </div>
+                `;
+                ingredientList.appendChild(card);
+              });
+            })
+            .catch((error) =>
+              console.error("Error fetching ingredients:", error)
+            );
+        }
+
+        // 선택된 재료를 삭제하는 함수
+        function deleteSelectedIngredients() {
+          const checkboxes = document.querySelectorAll(
+            ".ingredient-checkbox:checked"
+          );
+          const ingredientIds = Array.from(checkboxes).map((cb) => cb.value);
+
+          if (ingredientIds.length === 0) {
+            alert("삭제할 재료를 선택해 주세요.");
+            return;
+          }
+
+          fetch("/refrigerator/api/delete-ingredients", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ingredients: ingredientIds }),
+          })
+            .then((response) => {
+              if (response.ok) {
+                alert("버리기 완료");
+                filterIngredients("all"); // 목록을 다시 로드
+              } else {
+                alert("서버 오류 발생");
+              }
+            })
+            .catch((error) => console.error("Error:", error));
+        }
+
+        // 페이지 로드 시 전체 재료를 불러오기
+        window.onload = () => filterIngredients("all");
+      </script>
+    </div>
+  </body>
 </html>
