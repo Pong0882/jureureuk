@@ -1,11 +1,13 @@
 package com.jureureuk.jureureuk.controller;
 
+import java.util.ArrayList; // ArrayList 임포트
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
@@ -17,7 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jureureuk.jureureuk.entity.Cocktail;
 import com.jureureuk.jureureuk.entity.Ingredient;
+import com.jureureuk.jureureuk.repository.CocktailRepository;
+import com.jureureuk.jureureuk.service.CocktailService;
 import com.jureureuk.jureureuk.service.IngredientService;
 import com.jureureuk.jureureuk.service.UserIngredientService;
 
@@ -27,19 +32,43 @@ import com.jureureuk.jureureuk.service.UserIngredientService;
 @RequestMapping("/refrigerator")
 public class RefrigeratorController {
 
-    @Autowired
-    private IngredientService ingredientService;
-
+    private final IngredientService ingredientService;
     private final UserIngredientService userIngredientService;
+    private final CocktailRepository cocktailRepository;
+    private final CocktailService cocktailService;
 
-    // 생성자를 통해 UserIngredientService 주입
-    public RefrigeratorController(UserIngredientService userIngredientService) {
+    // 생성자 주입을 통해 의존성 주입
+    @Autowired
+    public RefrigeratorController(
+            IngredientService ingredientService,
+            UserIngredientService userIngredientService,
+            CocktailRepository cocktailRepository,
+            CocktailService cocktailService) {
+        this.ingredientService = ingredientService;
         this.userIngredientService = userIngredientService;
+        this.cocktailRepository = cocktailRepository;
+        this.cocktailService = cocktailService;
     }
 
     @GetMapping("")
-    public String refrigeratorMain() {
-        return "refrigerator/main";
+    public String refrigeratorMain(Model model, @AuthenticationPrincipal OAuth2User principal) {
+        // 로그인된 사용자의 Google ID 가져오기
+        String googleId = principal.getAttribute("email");
+
+        // 사용자가 가진 재료로 만들 수 있는 칵테일 조회
+        List<Cocktail> availableCocktails = cocktailRepository.findAvailableCocktailsByUserIngredients(googleId);
+
+        // 빈 리스트가 아닌지 확인
+        if (availableCocktails == null || availableCocktails.isEmpty()) {
+            model.addAttribute("cocktails", new ArrayList<>()); // 빈 리스트 전달
+        } else {
+            model.addAttribute("cocktails", availableCocktails);
+        }
+
+        List<Map<String, String>> cocktails2 = cocktailService.getCocktailsWithOneMissingIngredient(googleId);
+        model.addAttribute("cocktails2", cocktails2);
+
+        return "refrigerator/main"; // refrigerator/main.html로 이동
     }
 
     @GetMapping("/prac")
@@ -70,6 +99,11 @@ public class RefrigeratorController {
         Ingredient ingredient = ingredientService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid ingredient ID: " + id));
         model.addAttribute("ingredient", ingredient);
+
+        // 해당 재료로 만들 수 있는 칵테일 목록 가져오기
+        List<Cocktail> cocktails = ingredientService.getCocktailsByIngredient(id);
+        model.addAttribute("cocktails", cocktails);
+
         return "refrigerator/MaterialInfo";
     }
 

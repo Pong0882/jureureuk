@@ -1,7 +1,10 @@
 package com.jureureuk.jureureuk.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,7 @@ public class CocktailService {
 
     @Autowired
     private CocktailRepository cocktailRepository;
+    
 
     public List<Cocktail> getTop10CocktailsByLikes() { // 인기탑10
         return cocktailRepository.findTop10ByLikesCount();
@@ -77,4 +81,25 @@ public class CocktailService {
         cocktailRepository.save(cocktail);
     }
 
+    public List<Map<String, String>> getCocktailsWithOneMissingIngredient(String googleId) {
+        List<Object[]> results = cocktailRepository.findCocktailsWithOneMissingIngredient(googleId);
+
+        List<Map<String, String>> cocktails = new ArrayList<>();
+        for (Object[] row : results) {
+            Map<String, String> cocktail = new HashMap<>();
+            cocktail.put("id", row[0].toString()); // ID
+            cocktail.put("name", (String) row[1]); // Name
+            cocktail.put("photo", (String) row[2]); // Photo URL
+            cocktail.put("missingIngredient", (String) row[3]); // Missing Ingredient
+            cocktails.add(cocktail);
+        }
+
+        return cocktails;
+    }
+
+    public List<Cocktail> getCocktailsByRecipeType(int recipeType) {
+        return cocktailRepository.findCocktailsByRecipeType(recipeType);
+    }
+
+    
 }

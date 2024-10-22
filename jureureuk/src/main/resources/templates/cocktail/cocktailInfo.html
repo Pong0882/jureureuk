@@ -1,39 +1,54 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/UI/png/main_Logo.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/UI/png/main_Logo.png" />
     <title>주르륵</title>
-    <link rel="stylesheet" href="/UI/css/before_login.css">
-    <link rel="stylesheet" href="/UI/css/cocktail/main.css">
+    <link rel="stylesheet" href="/UI/css/before_login.css" />
+    <link rel="stylesheet" href="/UI/css/cocktail/main.css" />
+  </head>
 
-
-</head>
-
-<body>
+  <body>
     <div class="container">
-        <!-- 메뉴와 검색창이 포함된 헤더 -->
-        <header class="top-menu">
-            <div class="menu-left">
-                <button class="logo-btn">
-                    <img src="/UI/png/main_Logo.png" alt="주르륵" class="logo-img">
-                    주르륵
-                </button>
-                <nav class="main-nav">
-                    <button class="nav-btn" onclick="window.location.href='/main'">칵테일</button>
-                    <button class="nav-btn" onclick="window.location.href='/refrigerator'">나만의 냉장고</button>
-                    <button class="nav-btn" onclick="window.location.href='/sharing'">레시피 공유</button>
-                </nav>
-            </div>
-            <div class="menu-right">
-                <input type="text" placeholder="칵테일, 또는 재료를 검색하세요" class="search-input">
-                <button class="fav-btn" onclick="window.location.href='/bookmark'">즐겨찾기</button>
-                <button class="profile-btn" onclick="window.location.href='/profile'">프로필</button>
-            </div>
-        </header><!-- 인기 레시피 제목 및 기간 선택 -->
-        <!--
+      <!-- 메뉴와 검색창이 포함된 헤더 -->
+      <header class="top-menu">
+        <div class="menu-left">
+          <button class="logo-btn">
+            <img src="/UI/png/main_Logo.png" alt="주르륵" class="logo-img" />
+            주르륵
+          </button>
+          <nav class="main-nav">
+            <button class="nav-btn" onclick="window.location.href='/main'">
+              칵테일
+            </button>
+            <button
+              class="nav-btn"
+              onclick="window.location.href='/refrigerator'"
+            >
+              나만의 냉장고
+            </button>
+            <button class="nav-btn" onclick="window.location.href='/sharing'">
+              레시피 공유
+            </button>
+          </nav>
+        </div>
+        <div class="menu-right">
+          <input
+            type="text"
+            placeholder="칵테일, 또는 재료를 검색하세요"
+            class="search-input"
+          />
+          <button class="fav-btn" onclick="window.location.href='/bookmark'">
+            즐겨찾기
+          </button>
+          <button class="profile-btn" onclick="window.location.href='/profile'">
+            프로필
+          </button>
+        </div>
+      </header>
+      <!-- 인기 레시피 제목 및 기간 선택 -->
+      <!--
         <section class="filter-options">
             <button class="filter-btn active">전체</button>
             <button class="filter-btn">1년</button>
@@ -41,83 +56,106 @@
         </section>
     -->
 
-    <div th:if="${message != null}">
+      <div th:if="${message != null}">
         <p th:text="${message}"></p>
-    </div>
+      </div>
 
-        <div class="container2">
-    <!-- Section 1: Image and cocktail information -->
-    <div class="section1">
-        <div class="cocktail-image">
+      <div class="container2">
+        <!-- Section 1: Image and cocktail information -->
+        <div class="section1">
+          <div class="cocktail-image">
             <img th:src="@{${cocktail.photo}}" alt="칵테일 이미지" />
-        </div>
-        <div class="cocktail-info">
+          </div>
+          <div class="cocktail-info">
             <h1 th:text="${cocktail.name}"></h1>
 
             <!-- 버튼을 가로로 정렬할 수 있도록 wrapper 추가 -->
             <div class="button-group">
-                <form action="/cocktail/{id}/like" method="POST" th:action="@{/++cocktail/{id}/like(id=${cocktail.id})}">
-                    <button type="submit" class="like-button">
-                        👍 <span th:text="${cocktail.likesCount}">0</span>
-                    </button>
-                </form>
+              <form
+                action="/cocktail/{id}/like"
+                method="POST"
+                th:action="@{/cocktail/{id}/like(id=${cocktail.id})}"
+              >
+                <button type="submit" class="like-button">
+                  👍 <span th:text="${cocktail.likesCount}">0</span>
+                </button>
+              </form>
 
-                <form action="/cocktail/{id}/bookmark" method="POST" th:action="@{/cocktail/{id}/bookmark(id=${cocktail.id})}">
-                    <button type="submit" class="fav-button">
-                        ⭐ <span th:text="${cocktail.bookmarkCount}">0</span>
-                    </button>
-                </form>
+              <form
+                action="/cocktail/{id}/bookmark"
+                method="POST"
+                th:action="@{/cocktail/{id}/bookmark(id=${cocktail.id})}"
+              >
+                <button type="submit" class="fav-button">
+                  ⭐ <span th:text="${cocktail.bookmarkCount}">0</span>
+                </button>
+              </form>
             </div>
 
             <ul>
-                <p th:text="${cocktail.description}">칵테일 설명</p>
+              <p
+                th:utext="${#strings.replace(cocktail.description, '\n', '<br />')}"
+              >
+                칵테일 설명
+              </p>
             </ul>
+          </div>
         </div>
-    </div>
-
-
 
         <div class="comment-section">
-            <input type="text" placeholder="댓글을 입력해 주세요." class="comment-box">
-            <button class="register-button">등록</button>
+          <input
+            type="text"
+            placeholder="댓글을 입력해 주세요."
+            class="comment-box"
+          />
+          <button class="register-button">등록</button>
         </div>
-        
+
         <div class="comment-list">
-            <div class="comment">
-                <img src="/UI/png/profile.png" alt="프로필 사진">
-                <div class="comment-content">
-                    <p><strong>철수</strong> 2024-04-02</p>
-                    <p>라임주스 대신 오렌지 주스를 사용해도 맛있네요</p>
-                </div>
-                <p class="like-count">👍 17</p>
+          <div class="comment">
+            <img src="/UI/png/profile.png" alt="프로필 사진" />
+            <div class="comment-content">
+              <p><strong>철수</strong> 2024-04-02</p>
+              <p>라임주스 대신 오렌지 주스를 사용해도 맛있네요</p>
             </div>
+            <p class="like-count">👍 17</p>
+          </div>
         </div>
-            <!-- Section 3: Recipe Information -->
-            <div class="section3">
-                <div class="recipe-container">
-                    <div class="button-container">
-        <h3>레시피</h3>
-        
-                        <button id="iba-recipe-btn" class="recipe-btn active">IBA 레시피</button>
-                        <button id="pro-recipe-btn" class="recipe-btn">조주기능사 레시피</button>
-                    </div>
+        <!-- Section 3: Recipe Information -->
+        <div class="section3">
+          <div class="recipe-container">
+            <div class="button-container">
+              <h3>레시피</h3>
 
-                    <div id="recipe-content">
-                        <div id="iba-recipe" style="display: block;">
-                            <ul><p th:text="${cocktail.recipe1}">레시피 1</p>
-                            </ul>
-                        </div>
-
-                        <div id="pro-recipe" style="display: none;">
-                            <ul><p th:text="${cocktail.recipe2}">레시피 2</p>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+              <button id="iba-recipe-btn" class="recipe-btn active">
+                IBA 레시피
+              </button>
+              <button id="pro-recipe-btn" class="recipe-btn">
+                조주기능사 레시피
+              </button>
             </div>
+
+            <div id="recipe-content">
+              <div id="iba-recipe" style="display: block">
+                <ul>
+                  <p
+                    th:utext="${#strings.replace(cocktail.recipe1, '\n', '<br/>')}"
+                  >
+                    레시피 1
+                  </p>
+                </ul>
+              </div>
+            </div>
+
+            <div id="pro-recipe" style="display: none">
+              <ul>
+                <p th:text="${cocktail.recipe2}">레시피 2</p>
+              </ul>
+            </div>
+          </div>
         </div>
-        <script src="/js/cocktail.js"></script>
-
-</body>
-
+      </div>
+    </div>
+    <script src="/js/cocktail.js"></script>
+  </body>
 </html>

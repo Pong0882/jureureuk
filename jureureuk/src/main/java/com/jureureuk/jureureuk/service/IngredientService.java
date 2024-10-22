@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.jureureuk.jureureuk.entity.Cocktail;
 import com.jureureuk.jureureuk.entity.Ingredient;
 import com.jureureuk.jureureuk.repository.IngredientRepository;
 
@@ -25,4 +26,8 @@ public class IngredientService {
         return ingredientRepository.findById(id);
     }
 
+    // 재료 ID로 칵테일 목록 가져오는 메서드
+    public List<Cocktail> getCocktailsByIngredient(Long ingredientId) {
+        return ingredientRepository.findCocktailsByIngredient(ingredientId);
+    }
 }
